@@ -3,7 +3,7 @@
     {
       "match": "https://noslop.tech/.*",
       "urls": [
-        "https://github.com/CodeMeAPixel/Cadence"
+        "https://github.com/TryCadence/Website"
       ]
     }
   ]

@@ -1,6 +1,10 @@
 ---
 title: Contributing Guide
 description: How to contribute to Cadence - setup, guidelines, and best practices
+category: Community
+difficulty: Advanced
+time_estimate: 20 min
+prerequisites: [build-development]
 ---
 
 # Contributing to Cadence
@@ -29,7 +33,7 @@ This project adheres to a Code of Conduct. By participating, you are expected to
 ### Reporting
 
 Report unacceptable behavior to:
-- **Email**: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
+- **Email**: [support@noslop.tech](mailto:support@noslop.tech)
 - **GitHub**: Open a private issue or contact maintainers directly
 
 All reports will be reviewed and investigated promptly and fairly.
@@ -109,7 +113,7 @@ Documentation improvements are always welcome:
 - Create tutorials or guides
 - Translate documentation
 
-Documentation files are in [`cadence-web/docs/`](https://github.com/CodeMeAPixel/Cadence/tree/main/cadence-web/docs).
+Documentation files are in [`cadence-web/docs/`](https://github.com/TryCadence/Cadence/tree/main/cadence-web/docs).
 
 ### 🧪 Adding Detection Strategies
 
@@ -134,8 +138,8 @@ See [Adding Detection Strategies](#adding-detection-strategies) below.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/CodeMeAPixel/Cadence.git
-cd Cadence/cadence-tool
+git clone https://github.com/TryCadence/Cadence.git
+cd Cadence
 ```
 
 ### Install Dependencies
@@ -195,7 +199,7 @@ make vet
 ### Project Structure
 
 ```
-cadence-tool/
+Cadence/
 ├── cmd/
 │   └── cadence/          # CLI commands
 │       ├── main.go       # Entry point
@@ -363,7 +367,7 @@ Before submitting:
 
 ### Open the Pull Request
 
-1. Go to [GitHub](https://github.com/CodeMeAPixel/Cadence)
+1. Go to [GitHub](https://github.com/TryCadence/Cadence)
 2. Click "New Pull Request"
 3. Select your branch
 4. Fill out the PR template:
@@ -495,8 +499,8 @@ Maintainers handle releases:
 
 ## Getting Help
 
-- **Discussions**: [GitHub Discussions](https://github.com/CodeMeAPixel/Cadence/discussions)
-- **Issues**: [GitHub Issues](https://github.com/CodeMeAPixel/Cadence/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/TryCadence/Cadence/discussions)
+- **Issues**: [GitHub Issues](https://github.com/TryCadence/Cadence/issues)
 - **Email**: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
 - **Documentation**: [docs.cadence.sh](/)
 

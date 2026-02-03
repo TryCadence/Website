@@ -11,6 +11,7 @@ import {
 	Loader2,
 	Plus,
 	Tag,
+	Twitter,
 	Wrench,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -108,7 +109,7 @@ function getSectionColor(type: string) {
 		case "fixed":
 			return "text-red-400 bg-red-400/10 border-red-400/20";
 		case "technical":
-			return "text-blue-400 bg-blue-400/10 border-blue-400/20";
+			return "text-emerald-400 bg-emerald-400/10 border-emerald-400/20";
 		default:
 			return "text-white/60 bg-white/5 border-white/10";
 	}
@@ -122,31 +123,31 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 			<button
 				type="button"
 				onClick={() => setExpanded(!expanded)}
-				className="w-full flex items-center gap-3 px-4 py-3 bg-white/2 hover:bg-white/4 transition-colors text-left"
+				className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 bg-white/2 hover:bg-white/4 transition-colors text-left"
 			>
 				<span
-					className={`flex items-center justify-center w-7 h-7 rounded-md border ${getSectionColor(section.type)}`}
+					className={`flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-md border ${getSectionColor(section.type)}`}
 				>
 					{getSectionIcon(section.type)}
 				</span>
-				<span className="flex-1 font-medium text-white">{section.title}</span>
-				<span className="text-xs text-white/40 mr-2">
-					{section.items.length} items
+				<span className="flex-1 font-medium text-white text-sm md:text-base truncate">{section.title}</span>
+				<span className="text-xs text-white/40 mr-1 md:mr-2 shrink-0">
+					{section.items.length}
 				</span>
 				{expanded ? (
-					<ChevronDown className="w-4 h-4 text-white/40" />
+					<ChevronDown className="w-4 h-4 text-white/40 shrink-0" />
 				) : (
-					<ChevronRight className="w-4 h-4 text-white/40" />
+					<ChevronRight className="w-4 h-4 text-white/40 shrink-0" />
 				)}
 			</button>
 
 			{expanded && (
-				<div className="px-4 py-3 space-y-2 border-t border-white/5">
+				<div className="px-3 md:px-4 py-3 space-y-2 border-t border-white/5">
 						{section.items.map((item) => (
-							<div key={item} className="flex gap-3 text-sm">
+							<div key={item} className="flex gap-2 md:gap-3 text-sm">
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
 							<span
-								className="text-white/70"
+								className="text-white/70 break-words"
 								// biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown formatting
 								dangerouslySetInnerHTML={{
 									__html: item
@@ -156,7 +157,7 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 										)
 										.replace(
 											/`(.*?)`/g,
-											'<code class="px-1.5 py-0.5 bg-white/5 rounded text-xs font-mono">$1</code>',
+											'<code class="px-1 py-0.5 bg-white/5 rounded text-xs font-mono break-all">$1</code>',
 										),
 								}}
 							/>
@@ -192,27 +193,28 @@ function ReleaseCard({
 
 	return (
 		<div className="relative">
-			{/* Timeline line */}
-			<div className="absolute left-6 top-14 bottom-0 w-px bg-white/10" />
+			{/* Timeline line - hidden on mobile */}
+			<div className="absolute left-6 top-14 bottom-0 w-px bg-white/10 hidden md:block" />
 
-			<div className="relative flex gap-6">
-				{/* Timeline dot */}
+			<div className="relative flex flex-col md:flex-row gap-4 md:gap-6">
+				{/* Timeline dot - smaller on mobile, hidden line */}
 				<div
-					className={`relative z-10 mt-1 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+					className={`relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shrink-0 ${
 						isLatest
 							? "bg-emerald-500/20 border-2 border-emerald-500/50"
 							: "bg-white/5 border border-white/10"
 					}`}
 				>
 					<Tag
-						className={`w-5 h-5 ${isLatest ? "text-emerald-400" : "text-white/50"}`}
+						className={`w-4 h-4 md:w-5 md:h-5 ${isLatest ? "text-emerald-400" : "text-white/50"}`}
 					/>
 				</div>
 
 				{/* Content */}
-				<div className="flex-1 pb-12">
-					<div className="flex flex-wrap items-center gap-3 mb-4">
-						<h2 className="text-2xl font-bold text-white">
+				<div className="flex-1 pb-8 md:pb-12 min-w-0">
+					{/* Version header */}
+					<div className="flex items-center gap-2 md:gap-3 mb-2">
+						<h2 className="text-xl md:text-2xl font-bold text-white">
 							{release.tag_name}
 						</h2>
 						{isLatest && (
@@ -225,12 +227,16 @@ function ReleaseCard({
 								Pre-release
 							</span>
 						)}
-						<div className="flex items-center gap-1.5 text-sm text-white/40">
+					</div>
+					
+					{/* Meta info - stacked on mobile */}
+					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4 text-sm text-white/40">
+						<div className="flex items-center gap-1.5">
 							<Calendar className="w-3.5 h-3.5" />
 							{formattedDate}
 						</div>
 						{totalDownloads > 0 && (
-							<div className="flex items-center gap-1.5 text-sm text-white/40">
+							<div className="flex items-center gap-1.5">
 								<Download className="w-3.5 h-3.5" />
 								{totalDownloads.toLocaleString()} downloads
 							</div>
@@ -239,7 +245,7 @@ function ReleaseCard({
 							href={release.html_url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-1 text-sm text-white/40 hover:text-white transition-colors"
+							className="flex items-center gap-1 hover:text-white transition-colors"
 						>
 							<ExternalLink className="w-3.5 h-3.5" />
 							View on GitHub
@@ -286,10 +292,10 @@ function ReleaseCard({
 									<a
 										key={asset.name}
 										href={asset.browser_download_url}
-										className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-md transition-colors"
+										className="inline-flex items-center gap-1.5 px-2 md:px-3 py-1.5 text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-md transition-colors truncate max-w-full"
 									>
-										<Download className="w-3 h-3" />
-										{asset.name}
+										<Download className="w-3 h-3 shrink-0" />
+										<span className="truncate">{asset.name}</span>
 									</a>
 								))}
 							</div>
@@ -314,7 +320,7 @@ function ChangelogPage() {
 		async function fetchReleases() {
 			try {
 				const response = await fetch(
-					"https://api.github.com/repos/CodeMeAPixel/Cadence/releases",
+					"https://api.github.com/repos/TryCadence/Cadence/releases",
 					{
 						headers: {
 							Accept: "application/vnd.github.v3+json",
@@ -346,7 +352,7 @@ function ChangelogPage() {
 			{/* Header */}
 			<header className="sticky top-0 z-50 w-full">
 				<div className="absolute inset-0 bg-[#09090b]/90 backdrop-blur-md border-b border-white/5" />
-				<div className="relative max-w-4xl mx-auto px-6">
+				<div className="relative max-w-4xl mx-auto px-4 md:px-6">
 					<div className="flex items-center justify-between h-14">
 						<Link to="/" className="flex items-center gap-2 group">
 							<LogoIcon size={20} />
@@ -360,7 +366,15 @@ function ChangelogPage() {
 								Docs
 							</Link>
 							<a
-								href="https://github.com/CodeMeAPixel/Cadence/releases"
+								href="https://x.com/NoSlopTech"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-sm text-white/50 hover:text-white transition-colors"
+							>
+								<Twitter className="w-4 h-4" />
+							</a>
+							<a
+								href="https://github.com/TryCadence/Cadence/releases"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1"
@@ -375,7 +389,7 @@ function ChangelogPage() {
 
 			{/* Hero */}
 			<div className="relative border-b border-white/5">
-				<div className="max-w-4xl mx-auto px-6 py-16">
+				<div className="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-16">
 					<Link
 						to="/"
 						className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-6"
@@ -384,11 +398,11 @@ function ChangelogPage() {
 						Back to Home
 					</Link>
 
-					<h1 className="text-4xl md:text-5xl font-bold mb-4">Changelog</h1>
-					<p className="text-lg text-white/60 max-w-2xl">
+					<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Changelog</h1>
+					<p className="text-base md:text-lg text-white/60 max-w-2xl">
 						All releases for Cadence, pulled directly from{" "}
 						<a
-							href="https://github.com/CodeMeAPixel/Cadence/releases"
+							href="https://github.com/TryCadence/Cadence/releases"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-white/80 underline underline-offset-2 hover:text-white"
@@ -409,7 +423,7 @@ function ChangelogPage() {
 								releases
 							</div>
 							<div className="flex items-center gap-2 text-sm text-white/50">
-								<div className="w-2 h-2 rounded-full bg-blue-400" />
+								<div className="w-2 h-2 rounded-full bg-amber-400" />
 								Latest:{" "}
 								<span className="text-white font-medium">
 									{releases[0]?.tag_name}
@@ -421,7 +435,7 @@ function ChangelogPage() {
 			</div>
 
 			{/* Releases */}
-			<main className="max-w-4xl mx-auto px-6 py-12">
+			<main className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
 				{loading && (
 					<div className="flex items-center justify-center py-20">
 						<Loader2 className="w-8 h-8 text-white/50 animate-spin" />
@@ -432,7 +446,7 @@ function ChangelogPage() {
 					<div className="text-center py-20">
 						<p className="text-red-400 mb-4">{error}</p>
 						<a
-							href="https://github.com/CodeMeAPixel/Cadence/releases"
+							href="https://github.com/TryCadence/Cadence/releases"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-white/60 hover:text-white underline"
@@ -462,11 +476,11 @@ function ChangelogPage() {
 
 				{/* End of timeline */}
 				{!loading && !error && releases.length > 0 && (
-					<div className="flex items-center gap-4 mt-8 pl-6">
-						<div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-							<GitCommit className="w-5 h-5 text-white/30" />
+					<div className="flex items-center gap-4 mt-8 md:pl-6">
+						<div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+							<GitCommit className="w-4 h-4 md:w-5 md:h-5 text-white/30" />
 						</div>
-						<div>
+						<div className="min-w-0">
 							<p className="text-white/60">The beginning of Cadence</p>
 							<p className="text-sm text-white/40">
 								First release: {releases[releases.length - 1]?.tag_name}

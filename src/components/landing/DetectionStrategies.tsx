@@ -1,106 +1,110 @@
 import { GitBranch, Globe } from "lucide-react";
+import { useState } from "react";
 
 const gitStrategies = [
-	{ name: "Velocity Anomalies", desc: "Lines added/removed per minute" },
+	{ name: "Velocity Analysis", desc: "Lines added/removed per minute" },
 	{ name: "Size Analysis", desc: "Suspicious commit sizes" },
 	{ name: "Timing Patterns", desc: "Rapid successive commits" },
-	{ name: "Statistical Markers", desc: "Unusual change distributions" },
-	{ name: "Merge Behavior", desc: "Suspicious merge patterns" },
+	{ name: "Merge Commit Detection", desc: "Suspicious merge patterns" },
 	{ name: "File Dispersion", desc: "Excessive files per commit" },
 	{ name: "Ratio Analysis", desc: "Addition/deletion ratios" },
-	{ name: "Precision Metrics", desc: "Code structure patterns" },
+	{ name: "Precision Analysis", desc: "Code structure consistency" },
+	{ name: "Commit Messages", desc: "AI-like message patterns" },
+	{ name: "Naming Patterns", desc: "Variable/function naming style" },
+	{ name: "Structural Consistency", desc: "Code organization patterns" },
+	{ name: "Burst Patterns", desc: "Rapid commit sequences" },
+	{ name: "Error Handling", desc: "Exception pattern analysis" },
+	{ name: "Template Patterns", desc: "Boilerplate code detection" },
+	{ name: "File Extensions", desc: "File type modification patterns" },
+	{ name: "Statistical Anomalies", desc: "Outlier detection in metrics" },
+	{ name: "Timing Anomalies", desc: "Unusual time patterns" },
+	{ name: "Emoji Usage", desc: "Excessive or unusual emoji patterns" },
+	{ name: "Special Characters", desc: "Overused hyphens, dashes, unusual punctuation" },
 ];
 
 const webPatterns = [
 	{ name: "Overused Phrases", desc: '"in today\'s world", "furthermore"' },
 	{ name: "Generic Language", desc: '"enhance", "empower", "streamline"' },
-	{ name: "Perfect Grammar", desc: "Unnaturally perfect construction" },
-	{ name: "Uniform Sentences", desc: "Consistent sentence length" },
 	{ name: "Excessive Structure", desc: "Rigid formatting patterns" },
+	{ name: "Perfect Grammar", desc: "Unnaturally perfect construction" },
 	{ name: "Boilerplate Text", desc: "Template-like content" },
-	{ name: "Custom Patterns", desc: "User-defined detection rules" },
-	{ name: "AI Validation", desc: "GPT-4o-mini expert analysis" },
+	{ name: "Repetitive Patterns", desc: "Repeated sentence structures" },
+	{ name: "Missing Nuance", desc: "Lack of specific details" },
+	{ name: "Excessive Transitions", desc: "Too many connector words" },
+	{ name: "Uniform Sentences", desc: "Consistent sentence length" },
+	{ name: "AI Vocabulary", desc: "Characteristic AI word choices" },
+	{ name: "Emoji Overuse", desc: "Excessive or misplaced emojis" },
+	{ name: "Special Characters", desc: "Unusual special character usage patterns" },
+	{ name: "Missing Alt Text", desc: "Images without accessibility descriptions" },
+	{ name: "Semantic HTML", desc: "Divs instead of semantic tags" },
+	{ name: "Accessibility Markers", desc: "Missing aria-labels, roles, lang attributes" },
+	{ name: "Heading Hierarchy", desc: "Non-sequential heading levels" },
+	{ name: "Hardcoded Values", desc: "Fixed pixels, colors instead of variables" },
+	{ name: "Form Issues", desc: "Missing labels, improper input types" },
+	{ name: "Generic Link Text", desc: '"Click here", "Read more" patterns' },
+	{ name: "Generic Styling", desc: "Default colors, no custom theming" },
 ];
 
 export function DetectionStrategies() {
+	const [activeTab, setActiveTab] = useState<"git" | "web">("git");
+
+	const strategies = activeTab === "git" ? gitStrategies : webPatterns;
+	const count = activeTab === "git" ? 18 : 20;
+
 	return (
 		<section className="py-20 px-6">
-			<div className="max-w-5xl mx-auto">
+			<div className="max-w-4xl mx-auto">
 				<div className="text-center mb-12">
 					<h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
 						Detection Strategies
 					</h2>
 					<p className="text-base text-white/50 max-w-2xl mx-auto">
-						16 specialized detection strategies combining pattern analysis with
+					46 specialized detection strategies combining pattern analysis with
 						statistical markers
 					</p>
 				</div>
 
-				<div className="grid lg:grid-cols-2 gap-6">
-					{/* Git Analysis Card */}
-					<div className="rounded-xl bg-white/2 border border-white/5 p-6 hover:bg-white/4 hover:border-white/10 transition-all duration-200">
-						{/* Header */}
-						<div className="flex items-center gap-3 mb-6 pb-5 border-b border-white/5">
-							<div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
-								<GitBranch className="w-5 h-5 text-white/70" />
-							</div>
-							<div className="flex-1">
-								<h3 className="text-lg font-semibold text-white">
-									Git Repository
-								</h3>
-								<p className="text-sm text-white/40">
-									8 commit detection strategies
-								</p>
-							</div>
-						</div>
+				{/* Tab Buttons */}
+				<div className="flex justify-center gap-2 mb-8">
+					<button
+						type="button"
+						onClick={() => setActiveTab("git")}
+						className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+							activeTab === "git"
+								? "bg-white/10 text-white border border-white/20"
+								: "bg-white/2 text-white/50 border border-white/5 hover:bg-white/5 hover:text-white/70"
+						}`}
+					>
+						<GitBranch className="w-4 h-4" />
+						Git Repository
+						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">18</span>
+					</button>
+					<button
+						type="button"
+						onClick={() => setActiveTab("web")}
+						className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+							activeTab === "web"
+								? "bg-white/10 text-white border border-white/20"
+								: "bg-white/2 text-white/50 border border-white/5 hover:bg-white/5 hover:text-white/70"
+						}`}
+					>
+						<Globe className="w-4 h-4" />
+						Web Content
+					<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">20</span>
+					</button>
+				</div>
 
-						{/* Strategies List */}
-						<div className="space-y-3">
-							{gitStrategies.map((strategy) => (
-								<div key={strategy.name} className="flex items-start gap-3">
-									<div className="w-1 h-1 rounded-full bg-white/30 mt-2 flex-shrink-0" />
-									<div className="flex-1 min-w-0">
-										<div className="text-sm font-medium text-white/80">
-											{strategy.name}
-										</div>
-										<div className="text-xs text-white/40">{strategy.desc}</div>
-									</div>
+				{/* Strategies Grid */}
+				<div className="rounded-xl bg-white/2 border border-white/5 p-8">
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+						{strategies.map((strategy) => (
+							<div key={strategy.name} className="space-y-1">
+								<div className="text-sm font-medium text-white/90">
+									{strategy.name}
 								</div>
-							))}
-						</div>
-					</div>
-
-					{/* Web Analysis Card */}
-					<div className="rounded-xl bg-white/2 border border-white/5 p-6 hover:bg-white/4 hover:border-white/10 transition-all duration-200">
-						{/* Header */}
-						<div className="flex items-center gap-3 mb-6 pb-5 border-b border-white/5">
-							<div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
-								<Globe className="w-5 h-5 text-white/70" />
+								<div className="text-xs text-white/40">{strategy.desc}</div>
 							</div>
-							<div className="flex-1">
-								<h3 className="text-lg font-semibold text-white">
-									Web Content
-								</h3>
-								<p className="text-sm text-white/40">
-									8 text detection strategies
-								</p>
-							</div>
-						</div>
-
-						{/* Strategies List */}
-						<div className="space-y-3">
-							{webPatterns.map((pattern) => (
-								<div key={pattern.name} className="flex items-start gap-3">
-									<div className="w-1 h-1 rounded-full bg-white/30 mt-2 flex-shrink-0" />
-									<div className="flex-1 min-w-0">
-										<div className="text-sm font-medium text-white/80">
-											{pattern.name}
-										</div>
-										<div className="text-xs text-white/40">{pattern.desc}</div>
-									</div>
-								</div>
-							))}
-						</div>
+						))}
 					</div>
 				</div>
 			</div>

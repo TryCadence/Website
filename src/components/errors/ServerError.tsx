@@ -72,7 +72,7 @@ export function ServerError({ error }: ServerErrorProps) {
 						</Button>
 						<Button size="lg" variant="secondary" asChild>
 							<a
-								href="https://github.com/CodeMeAPixel/Cadence/issues"
+								href="https://github.com/TryCadence/Website/issues"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -91,7 +91,7 @@ export function ServerError({ error }: ServerErrorProps) {
 					</a>
 					{" · "}
 					<a
-						href="https://github.com/CodeMeAPixel/Cadence/issues"
+						href="https://github.com/TryCadence/Website/issues"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="hover:text-white/60 transition-colors"

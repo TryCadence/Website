@@ -1,7 +1,7 @@
 export function StatsBar() {
 	const stats = [
-		{ value: "70+", label: "Tests", mono: false },
-		{ value: "10", label: "Strategies", mono: false },
+		{ value: "210+", label: "Tests", mono: false },
+		{ value: "38", label: "Strategies", mono: false },
 		{ value: "2", label: "Analysis Modes", mono: false },
 		{ value: "<1s", label: "Avg. Analysis", mono: true },
 	];

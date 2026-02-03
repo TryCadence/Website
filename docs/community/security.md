@@ -1,6 +1,10 @@
 ---
 title: Security Policy
 description: Security practices, vulnerability reporting, and best practices for Cadence
+category: Reference
+difficulty: Intermediate
+time_estimate: 10 min
+prerequisites: []
 ---
 
 # Security Policy
@@ -15,14 +19,14 @@ If you discover a security vulnerability in Cadence, please **do not open a publ
 
 **Preferred Method - Private Security Advisory:**
 
-1. Go to [GitHub Security Advisories](https://github.com/CodeMeAPixel/Cadence/security/advisories/new)
+1. Go to [GitHub Security Advisories](https://github.com/TryCadence/Cadence/security/advisories/new)
 2. Click "Report a vulnerability"
 3. Fill out the form with details
 4. Submit privately
 
 **Alternative - Email:**
 
-Send details to [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev) with:
+Send details to [security@noslop.tech](mailto:security@noslop.tech) with:
 - Subject line: "SECURITY: [Brief Description]"
 - Detailed description of the vulnerability
 - Steps to reproduce (if applicable)
@@ -31,7 +35,7 @@ Send details to [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev) with:
 
 **Social Media (Urgent Only):**
 
-For critical, time-sensitive issues: [@CodeMeAPixel](https://twitter.com/CodeMeAPixel) on Twitter/X
+For critical, time-sensitive issues: [@NoSlopTech](https://x.com/NoSlopTech) on Twitter/X
 
 ### What to Include
 
@@ -85,9 +89,9 @@ You'll receive updates on:
 
 We appreciate responsible disclosure. If you'd like:
 
-✅ **Credit in Security Advisory**: We'll acknowledge your contribution
-✅ **Listed as Reporter**: Your name/handle in release notes
-❌ **Anonymity**: We'll keep your identity private if requested
+- **Credit in Security Advisory**: We'll acknowledge your contribution
+- **Listed as Reporter**: Your name/handle in release notes
+- **Anonymity**: We'll keep your identity private if requested
 
 ## Supported Versions
 
@@ -109,12 +113,12 @@ cadence version
 
 ```bash
 # Using Make
-cd Cadence/cadence-tool
+cd Cadence
 git pull
 make build
 
 # Or download latest release
-# https://github.com/CodeMeAPixel/Cadence/releases/latest
+# https://github.com/TryCadence/Cadence/releases/latest
 ```
 
 ## Security Updates
@@ -123,7 +127,7 @@ make build
 
 Stay informed about security updates:
 
-1. **GitHub Security Advisories**: [View advisories](https://github.com/CodeMeAPixel/Cadence/security/advisories)
+1. **GitHub Security Advisories**: [View advisories](https://github.com/TryCadence/Cadence/security/advisories)
 2. **Release Notes**: Check `CHANGELOG.md` for security fixes
 3. **GitHub Watch**: Watch releases for notifications
 
@@ -356,8 +360,8 @@ sha256sum cadence-v0.2.1.tar.gz
 For maximum security, build from audited source:
 
 ```bash
-git clone https://github.com/CodeMeAPixel/Cadence.git
-cd Cadence/cadence-tool
+git clone https://github.com/TryCadence/Cadence.git
+cd Cadence
 git verify-commit HEAD  # Verify commit signature
 make build
 ```
@@ -411,11 +415,11 @@ The webhook server is a public HTTP endpoint. Risks:
 
 ### Current
 
-✅ **HMAC Signature Verification**: GitHub and GitLab webhooks
-✅ **Input Validation**: Sanitized repository URLs and paths
-✅ **Resource Limits**: Configurable worker pools
-✅ **Secure Defaults**: AI disabled by default, localhost binding
-✅ **Environment Variables**: Secrets via env vars, not files
+- **HMAC Signature Verification**: GitHub and GitLab webhooks
+- **Input Validation**: Sanitized repository URLs and paths
+- **Resource Limits**: Configurable worker pools
+- **Secure Defaults**: AI disabled by default, localhost binding
+- **Environment Variables**: Secrets via env vars, not files
 
 ### Planned
 
@@ -435,7 +439,7 @@ Cadence is licensed under **AGPL-3.0**. Key implications:
 - Modifications must be disclosed if deployed as a service
 - Derivative works must use compatible license
 
-See [LICENSE](https://github.com/CodeMeAPixel/Cadence/blob/main/LICENSE) for details.
+See [LICENSE](https://github.com/TryCadence/Cadence/blob/main/LICENSE) for details.
 
 ### No Warranty
 
@@ -445,8 +449,9 @@ Cadence is provided "as is" without warranty of any kind, express or implied. Th
 
 For security-related questions (not vulnerability reports):
 
-- **Email**: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
-- **Discussions**: [GitHub Discussions](https://github.com/CodeMeAPixel/Cadence/discussions)
+- **Email**: [security@noslop.tech](mailto:security@noslop.tech)
+- **Support**: [support@noslop.tech](mailto:support@noslop.tech)
+- **Discussions**: [GitHub Discussions](https://github.com/TryCadence/Cadence/discussions)
 
 For vulnerability reports, use the [reporting process](#reporting-a-vulnerability) above.
 

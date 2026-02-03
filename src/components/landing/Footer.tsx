@@ -26,7 +26,7 @@ export function Footer() {
 						</a>
 						<span className="w-1 h-1 rounded-full bg-white/20" />
 						<a
-							href="https://github.com/CodeMeAPixel/Cadence"
+							href="https://github.com/TryCadence/Cadence"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:text-white/50 transition-colors"
@@ -35,7 +35,7 @@ export function Footer() {
 						</a>
 						<span className="w-1 h-1 rounded-full bg-white/20" />
 						<a
-							href="https://github.com/CodeMeAPixel/Cadence/blob/main/LICENSE"
+							href="https://github.com/TryCadence/Cadence/blob/main/LICENSE"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:text-white/50 transition-colors font-mono"

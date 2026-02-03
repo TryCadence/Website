@@ -152,8 +152,8 @@ export function QuickStart() {
 
 					<Tabs.Content value="install" className="focus:outline-none">
 						<CodeBlock
-							code={`git clone https://github.com/CodeMeAPixel/Cadence.git
-cd cadence/cadence-tool
+							code={`git clone https://github.com/TryCadence/Cadence.git
+cd Cadence
 make build
 ./cadence --version`}
 						/>

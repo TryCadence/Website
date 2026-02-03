@@ -44,7 +44,7 @@ export function NotFoundError() {
 					{/* Suggestions */}
 					<div className="bg-white/2 border border-white/5 rounded-lg p-6 mb-8 text-left">
 						<p className="text-sm text-white/50 mb-3">
-							Here are some suggestions:
+							Try these:
 						</p>
 						<ul className="space-y-2 text-sm text-white/60">
 							<li>• Check the URL for typos</li>
@@ -64,7 +64,7 @@ export function NotFoundError() {
 						</Button>
 						<Button size="lg" variant="secondary" asChild>
 							<a
-								href="https://github.com/CodeMeAPixel/Cadence"
+								href="https://github.com/TryCadence/Website"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -83,7 +83,7 @@ export function NotFoundError() {
 					</a>
 					{" · "}
 					<a
-						href="https://github.com/CodeMeAPixel/Cadence"
+						href="https://github.com/TryCadence/Website"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="hover:text-white/60 transition-colors"

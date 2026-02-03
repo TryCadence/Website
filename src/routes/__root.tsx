@@ -5,8 +5,12 @@ const SITE_URL = "https://noslop.tech";
 const SITE_TITLE = "Cadence";
 const SITE_DESCRIPTION =
 	"AI Content Detection for Git and Web. Analyze repositories and websites for AI-generated code and text with pattern-based detection and confidence scoring.";
-const SITE_IMAGE = `${SITE_URL}/og-image.svg`;
+const SITE_IMAGE = `${SITE_URL}/og-image.png`;
+const SITE_DOCS_IMAGE = `${SITE_URL}/og-docs.png`;
 const SITE_AUTHOR = "CodeMeAPixel";
+
+// Export for use in other routes
+export { SITE_URL, SITE_TITLE, SITE_IMAGE, SITE_DOCS_IMAGE, SITE_AUTHOR };
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -51,7 +55,7 @@ export const Route = createRootRoute({
 			},
 			{
 				property: "og:url",
-				content: SITE_URL,
+				content: `${SITE_URL}/`,
 			},
 			{
 				property: "og:title",
@@ -271,10 +275,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 								url: "https://codemeapixel.dev",
 							},
 							license:
-								"https://github.com/CodeMeAPixel/Cadence/blob/main/LICENSE",
-							codeRepository: "https://github.com/CodeMeAPixel/Cadence",
+								"https://github.com/TryCadence/Website/blob/main/LICENSE",
+							codeRepository: "https://github.com/TryCadence/Website",
 						}),
 					}}
+				/>
+				{/* Ackee Analytics */}
+				<script
+					async
+					src="https://ackee.bytebrush.dev/tracker.js"
+					data-ackee-server="https://ackee.bytebrush.dev"
+					data-ackee-domain-id="c33b67dd-b573-4dcf-95a8-cf444abca842"
 				/>
 			</head>
 			<body>

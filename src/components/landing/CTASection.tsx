@@ -17,7 +17,7 @@ export function CTASection() {
 					<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
 						<Button size="lg" asChild>
 							<a
-								href="https://github.com/CodeMeAPixel/Cadence"
+								href="https://github.com/TryCadence/Cadence"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="group"

@@ -9,11 +9,11 @@
 - **Name:** Cadence
 - **Tagline:** AI Content Detection for Git and Web
 - **Website:** https://noslop.tech
-- **Repository:** https://github.com/CodeMeAPixel/Cadence
+- **Repository:** https://github.com/TryCadence/Website
 - **Documentation:** https://noslop.tech/docs
 - **License:** AGPL-3.0
 - **Author:** CodeMeAPixel
-- **Contact:** hey@codemeapixel.dev
+- **Contact:** hey@noslop.tech
 
 ## Site Structure
 
@@ -86,7 +86,7 @@ When using this content for training AI models:
 ## Source Code Access
 
 ```
-git clone https://github.com/CodeMeAPixel/Cadence.git
+git clone https://github.com/TryCadence/Website.git
 cd Cadence
 make build
 ```
@@ -100,9 +100,9 @@ For comprehensive documentation content, see individual doc pages:
 
 ## Contact
 
-- **GitHub Issues:** https://github.com/CodeMeAPixel/Cadence/issues
-- **GitHub Discussions:** https://github.com/CodeMeAPixel/Cadence/discussions
-- **Email:** hey@codemeapixel.dev
+- **GitHub Issues:** https://github.com/TryCadence/Website/issues
+- **GitHub Discussions:** https://github.com/TryCadence/Website/discussions
+- **Email:** hey@noslop.tech
 
 ---
 

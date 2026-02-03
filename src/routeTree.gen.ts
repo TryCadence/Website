@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MetaPreviewRouteImport } from './routes/meta-preview'
+import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
@@ -18,6 +20,16 @@ import { Route as DocsSplatRouteImport } from './routes/docs/$'
 const MetaPreviewRoute = MetaPreviewRouteImport.update({
   id: '/meta-preview',
   path: '/meta-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamplesRoute = ExamplesRouteImport.update({
+  id: '/examples',
+  path: '/examples',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChangelogRoute = ChangelogRouteImport.update({
@@ -44,6 +56,8 @@ const DocsSplatRoute = DocsSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/changelog': typeof ChangelogRoute
+  '/examples': typeof ExamplesRoute
+  '/features': typeof FeaturesRoute
   '/meta-preview': typeof MetaPreviewRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs/': typeof DocsIndexRoute
@@ -51,6 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/changelog': typeof ChangelogRoute
+  '/examples': typeof ExamplesRoute
+  '/features': typeof FeaturesRoute
   '/meta-preview': typeof MetaPreviewRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs': typeof DocsIndexRoute
@@ -59,21 +75,47 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/changelog': typeof ChangelogRoute
+  '/examples': typeof ExamplesRoute
+  '/features': typeof FeaturesRoute
   '/meta-preview': typeof MetaPreviewRoute
   '/docs/$': typeof DocsSplatRoute
   '/docs/': typeof DocsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/changelog' | '/meta-preview' | '/docs/$' | '/docs/'
+  fullPaths:
+    | '/'
+    | '/changelog'
+    | '/examples'
+    | '/features'
+    | '/meta-preview'
+    | '/docs/$'
+    | '/docs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/changelog' | '/meta-preview' | '/docs/$' | '/docs'
-  id: '__root__' | '/' | '/changelog' | '/meta-preview' | '/docs/$' | '/docs/'
+  to:
+    | '/'
+    | '/changelog'
+    | '/examples'
+    | '/features'
+    | '/meta-preview'
+    | '/docs/$'
+    | '/docs'
+  id:
+    | '__root__'
+    | '/'
+    | '/changelog'
+    | '/examples'
+    | '/features'
+    | '/meta-preview'
+    | '/docs/$'
+    | '/docs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChangelogRoute: typeof ChangelogRoute
+  ExamplesRoute: typeof ExamplesRoute
+  FeaturesRoute: typeof FeaturesRoute
   MetaPreviewRoute: typeof MetaPreviewRoute
   DocsSplatRoute: typeof DocsSplatRoute
   DocsIndexRoute: typeof DocsIndexRoute
@@ -86,6 +128,20 @@ declare module '@tanstack/react-router' {
       path: '/meta-preview'
       fullPath: '/meta-preview'
       preLoaderRoute: typeof MetaPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/examples': {
+      id: '/examples'
+      path: '/examples'
+      fullPath: '/examples'
+      preLoaderRoute: typeof ExamplesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/changelog': {
@@ -122,6 +178,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChangelogRoute: ChangelogRoute,
+  ExamplesRoute: ExamplesRoute,
+  FeaturesRoute: FeaturesRoute,
   MetaPreviewRoute: MetaPreviewRoute,
   DocsSplatRoute: DocsSplatRoute,
   DocsIndexRoute: DocsIndexRoute,

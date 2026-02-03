@@ -38,7 +38,7 @@
   <text x="80" y="280" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="80" font-weight="700" fill="white" letter-spacing="-2">Documentation</text>
   
   <!-- Subtitle -->
-  <text x="80" y="360" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="32" fill="white" fill-opacity="0.6">Complete guide to AI content detection</text>
+  <text x="80" y="360" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" fill="white" fill-opacity="0.6">Securing the SDLC through deep pattern detection and statistical markers.</text>
   
   <!-- Feature list -->
   <g transform="translate(80, 420)" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="white" fill-opacity="0.5">

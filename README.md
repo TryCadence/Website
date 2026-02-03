@@ -1,6 +1,6 @@
 # Cadence Documentation Website
 
-Official documentation and landing page for [Cadence](https://github.com/CodeMeAPixel/Cadence), an AI content detection tool for Git repositories and websites.
+Official documentation and landing page for [Cadence](https://github.com/TryCadence/Website), an AI content detection tool for Git repositories and websites.
 
 **Live Site**: [https://noslop.tech](https://noslop.tech)
 
@@ -270,18 +270,18 @@ No environment variables required for basic operation. The site is fully static.
 
 ## License
 
-Part of the [Cadence](https://github.com/CodeMeAPixel/Cadence) project.
+Part of the [Cadence](https://github.com/TryCadence/Website) project.
 
 Licensed under AGPL-3.0.
 
 ## Links
 
-- **Main Repository**: [CodeMeAPixel/Cadence](https://github.com/CodeMeAPixel/Cadence)
+- **Main Repository**: [TryCadence/Website](https://github.com/TryCadence/Website)
 - **Live Site**: [https://noslop.tech](https://noslop.tech)
 - **CLI Tool**: [cadence-tool/](../cadence-tool/)
 
 ## Support
 
 For issues or questions about the website:
-- Open an issue on [GitHub](https://github.com/CodeMeAPixel/Cadence/issues)
-- Contact: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
+- Open an issue on [GitHub](https://github.com/TryCadence/Website/issues)
+- Contact: [hey@noslop.tech](mailto:hey@noslop.tech)
