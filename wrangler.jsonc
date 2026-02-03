@@ -1,7 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tanstack-start-app",
+  "name": "cadence-web",
   "compatibility_date": "2025-09-02",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry"
+  "main": "@tanstack/react-start/server-entry",
+  
+  // Custom domain configuration
+  "routes": [
+    { "pattern": "noslop.tech", "custom_domain": true },
+    { "pattern": "www.noslop.tech", "custom_domain": true }
+  ],
+
+  // Production environment
+  "vars": {
+    "ENVIRONMENT": "production"
+  }
 }

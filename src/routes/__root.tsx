@@ -114,12 +114,30 @@ export const Route = createRootRoute({
 				content: "#09090b",
 			},
 			{
+				name: "color-scheme",
+				content: "dark",
+			},
+			{
 				name: "apple-mobile-web-app-capable",
 				content: "yes",
 			},
 			{
 				name: "apple-mobile-web-app-status-bar-style",
 				content: "black-translucent",
+			},
+			{
+				name: "apple-mobile-web-app-title",
+				content: SITE_TITLE,
+			},
+
+			// Microsoft/Windows
+			{
+				name: "msapplication-TileColor",
+				content: "#09090b",
+			},
+			{
+				name: "msapplication-config",
+				content: "/browserconfig.xml",
 			},
 
 			// Robots and crawlers
@@ -177,10 +195,27 @@ export const Route = createRootRoute({
 				href: "/manifest.json",
 			},
 
+			// Humans.txt
+			{
+				rel: "author",
+				href: "/humans.txt",
+			},
+
+			// Sitemap
+			{
+				rel: "sitemap",
+				type: "application/xml",
+				href: "/sitemap.xml",
+			},
+
 			// Preconnect to external domains
 			{
 				rel: "preconnect",
 				href: "https://fonts.googleapis.com",
+			},
+			{
+				rel: "preconnect",
+				href: "https://api.github.com",
 			},
 			{
 				rel: "dns-prefetch",

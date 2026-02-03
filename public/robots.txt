@@ -1,19 +1,60 @@
+# Robots.txt for noslop.tech
 # https://www.robotstxt.org/robotstxt.html
+# Last updated: 2026-02-02
+
+# Default rules for all crawlers
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
+Disallow: /api/
+Disallow: /_build/
+Disallow: /*.json$
 
-# Specific crawler rules
+# Search engine crawlers - full access
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
 
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Social media crawlers - allow for previews
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
 # AI/ML crawlers - restrict training data collection
+# Cadence is an AI detection tool - we don't want to be used to train AI
 User-agent: GPTBot
 Disallow: /
 
@@ -29,9 +70,43 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
 User-agent: Omgili
 Disallow: /
 
-# Sitemap location
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# SEO spam bots - block
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap locations
 Sitemap: https://noslop.tech/sitemap.xml
-Sitemap: https://noslop.tech/llms.txt
+
+# LLMs.txt for AI model policy
+# See: https://llmstxt.org
+# Policy file: https://noslop.tech/llms.txt

@@ -1,0 +1,33 @@
+/* TEAM */
+Creator: CodeMeAPixel
+Site: https://codemeapixel.dev
+Contact: hey@codemeapixel.dev
+Location: Earth
+
+/* SITE */
+Name: Cadence
+URL: https://noslop.tech
+Description: AI Content Detection for Git and Web
+Last update: 2026-02-02
+Language: English
+Standards: HTML5, CSS3, ECMAScript 2024
+
+/* TECHNOLOGY */
+Frontend: React 19, TanStack Start
+Styling: Tailwind CSS v4
+Build: Vite 7
+Hosting: Cloudflare Workers
+Backend: Go 1.23.0
+
+/* TOOLS */
+Editor: Visual Studio Code
+AI Assistant: GitHub Copilot
+Version Control: Git, GitHub
+Package Manager: Bun
+Linter: Biome
+
+/* THANKS */
+TanStack Team - https://tanstack.com
+Tailwind CSS Team - https://tailwindcss.com
+Cloudflare - https://cloudflare.com
+Open Source Community

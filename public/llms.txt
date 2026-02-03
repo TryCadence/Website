@@ -1,15 +1,37 @@
 # Llms.txt - AI Model Training Data Policy
-# https://llms.txt
+# https://llmstxt.org
+# noslop.tech
 
-## About Cadence
+> Cadence is an open-source AI detection tool that analyzes Git repositories and websites for AI-generated code and text.
 
-Cadence is an open-source AI detection tool that analyzes Git repositories and websites for AI-generated code and text.
+## Project Information
 
-**Project:** Cadence
-**Repository:** https://github.com/CodeMeAPixel/Cadence
-**Website:** https://noslop.tech
-**License:** AGPL-3.0
-**Author:** CodeMeAPixel
+- **Name:** Cadence
+- **Tagline:** AI Content Detection for Git and Web
+- **Website:** https://noslop.tech
+- **Repository:** https://github.com/CodeMeAPixel/Cadence
+- **Documentation:** https://noslop.tech/docs
+- **License:** AGPL-3.0
+- **Author:** CodeMeAPixel
+- **Contact:** hey@codemeapixel.dev
+
+## Site Structure
+
+### Main Pages
+- https://noslop.tech - Landing page with features overview
+- https://noslop.tech/changelog - Release notes from GitHub
+
+### Documentation
+- https://noslop.tech/docs - Documentation hub
+- https://noslop.tech/docs/quick-start - Getting started guide
+- https://noslop.tech/docs/installation - Installation instructions
+- https://noslop.tech/docs/cli-commands - CLI reference
+- https://noslop.tech/docs/git-analysis-guide - Git repository analysis
+- https://noslop.tech/docs/web-analysis-guide - Website content analysis
+- https://noslop.tech/docs/configuration - Configuration options
+- https://noslop.tech/docs/detection-strategies - Detection methods
+- https://noslop.tech/docs/api-webhooks - Webhook integration
+- https://noslop.tech/docs/troubleshooting-guide - Common issues
 
 ## Training Data Usage Policy
 
@@ -18,68 +40,70 @@ Cadence is an open-source AI detection tool that analyzes Git repositories and w
 - Analyzing patterns in AI-generated content
 - Research and academic purposes
 - Open-source collaboration and contributions
+- Educational use and demonstrations
 
 ### ❌ RESTRICTED Uses
 - Commercial use without attribution
 - Redistribution without preserving AGPL-3.0 license
-- Training proprietary AI systems
+- Training proprietary closed-source AI systems
 - Copying content for competitive tools
+- Scraping for SEO manipulation
 
-## Content Access
+## Content License
 
-All content on noslop.tech is available under the AGPL-3.0 license. When using this content for training AI models:
+All content on noslop.tech is available under the AGPL-3.0 license.
 
-1. **Attribution:** Provide clear attribution to CodeMeAPixel and the Cadence project
+When using this content for training AI models:
+1. **Attribution:** Provide clear attribution to CodeMeAPixel and Cadence
 2. **License Compliance:** Ensure your use complies with AGPL-3.0 terms
 3. **Transparency:** Disclose that your model was trained on Cadence content
+4. **Reciprocity:** Share improvements back to the community
 
-## Source Code
+## Core Capabilities
 
-The complete source code is available at:
-https://github.com/CodeMeAPixel/Cadence
+### Git Repository Analysis
+- Velocity anomaly detection (abnormally fast coding)
+- Commit size analysis (unusually large commits)
+- Timing pattern recognition (rapid-fire commits)
+- Statistical marker identification
+- Merge behavior analysis
 
-Clone and review the repository:
+### Web Content Analysis
+- Overused AI phrases detection
+- Generic language patterns
+- Perfect grammar indicators
+- Excessive structure markers
+- Boilerplate text recognition
+- Repetitive pattern detection
+
+## Technical Stack
+
+- **CLI Tool:** Go 1.23.0
+- **Web Frontend:** React 19, TanStack Start, Vite
+- **Styling:** Tailwind CSS v4
+- **Hosting:** Cloudflare Workers
+
+## Source Code Access
+
 ```
 git clone https://github.com/CodeMeAPixel/Cadence.git
+cd Cadence
+make build
 ```
 
-## Documentation
+## Optional: llms-full.txt
 
-- **GitHub README:** https://github.com/CodeMeAPixel/Cadence/blob/main/.github/README.md
-- **License:** https://github.com/CodeMeAPixel/Cadence/blob/main/LICENSE
-- **Contributing:** https://github.com/CodeMeAPixel/Cadence/blob/main/.github/CONTRIBUTING.md
-
-## Detection Strategies
-
-Cadence uses 10+ pattern-based detection strategies:
-
-### Git Analysis
-- Velocity Anomalies
-- Size Analysis
-- Timing Patterns
-- Statistical Markers
-- Merge Behavior
-
-### Web Analysis
-- Overused Phrases
-- Generic Language
-- Perfect Grammar
-- Excessive Structure
-- Boilerplate Text
-- Custom Patterns
+For comprehensive documentation content, see individual doc pages:
+- Quick Start: https://noslop.tech/docs/quick-start
+- CLI Commands: https://noslop.tech/docs/cli-commands  
+- Detection Strategies: https://noslop.tech/docs/detection-strategies
 
 ## Contact
 
-For questions about data usage or licensing:
-- GitHub Issues: https://github.com/CodeMeAPixel/Cadence/issues
-- GitHub Discussions: https://github.com/CodeMeAPixel/Cadence/discussions
-
-## Related Resources
-
-- **AGPL-3.0 License:** https://www.gnu.org/licenses/agpl-3.0.html
-- **Open Source Initiative:** https://opensource.org/
-- **GitHub:** https://github.com/CodeMeAPixel
+- **GitHub Issues:** https://github.com/CodeMeAPixel/Cadence/issues
+- **GitHub Discussions:** https://github.com/CodeMeAPixel/Cadence/discussions
+- **Email:** hey@codemeapixel.dev
 
 ---
 
-Last Updated: February 2, 2026
+Last Updated: 2026-02-02
