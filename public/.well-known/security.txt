@@ -1,0 +1,5 @@
+Contact: hey@codemeapixel.dev
+Expires: 2027-02-02T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://noslop.tech/.well-known/security.txt
+Policy: https://github.com/CodeMeAPixel/Cadence/security/policy

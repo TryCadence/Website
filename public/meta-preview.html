@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Images Preview - Cadence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #09090b;
+      color: #ffffff;
+      padding: 4rem 2rem;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      margin-bottom: 3rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .subtitle {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .image-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .image-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .image-info h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .image-info .description {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.25rem;
+    }
+    
+    .image-info .dimensions {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    
+    .open-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .image-container {
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .image-container img {
+      width: 100%;
+      display: block;
+    }
+    
+    .image-path {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .image-path code {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .tools-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tools-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tool-link {
+      margin-bottom: 1.5rem;
+    }
+    
+    .tool-link h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tool-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: underline;
+    }
+    
+    .tool-link a:hover {
+      color: #ffffff;
+    }
+    
+    .back-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .back-link a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: underline;
+    }
+    
+    .back-link a:hover {
+      color: #ffffff;
+    }
+    
+    .note {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 3rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .note strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Meta Images Preview</h1>
+      <p class="subtitle">Preview of social media sharing images used in meta tags</p>
+    </header>
+
+    <div class="note">
+      <strong>Cadence Brand Assets:</strong> SVG logos and meta images for social sharing, favicons, and PWA icons.
+    </div>
+
+    <div class="image-card">
+      <div class="image-header">
+        <div class="image-info">
+          <h2>Main OG Image</h2>
+          <p class="description">Primary Open Graph image for social sharing</p>
+          <p class="dimensions">1200 × 630px</p>
+        </div>
+        <a href="/og-image.svg" target="_blank" class="open-btn">
+          Open Full Size
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="image-container">
+        <img src="/og-image.svg" alt="Main OG Image" loading="lazy">
+      </div>
+      
+      <div class="image-path">
+        <code>/og-image.svg</code>
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-header">
+        <div class="image-info">
+          <h2>Documentation OG Image</h2>
+          <p class="description">Open Graph image for documentation pages</p>
+          <p class="dimensions">1200 × 630px</p>
+        </div>
+        <a href="/og-docs.svg" target="_blank" class="open-btn">
+          Open Full Size
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="image-container">
+        <img src="/og-docs.svg" alt="Documentation OG Image" loading="lazy">
+      </div>
+      
+      <div class="image-path">
+        <code>/og-docs.svg</code>
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-header">
+        <div class="image-info">
+          <h2>Main Logo</h2>
+          <p class="description">Full logo with detection rings and waveform</p>
+          <p class="dimensions">512 × 512px</p>
+        </div>
+        <a href="/logo.svg" target="_blank" class="open-btn">
+          Open Full Size
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="image-container" style="max-width: 512px; margin: 0 auto;">
+        <img src="/logo.svg" alt="Main Logo" loading="lazy">
+      </div>
+      
+      <div class="image-path">
+        <code>/logo.svg</code>
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-header">
+        <div class="image-info">
+          <h2>Logo 192px &amp; Favicon</h2>
+          <p class="description">Apple touch icon, PWA icon, and browser favicon</p>
+          <p class="dimensions">192px &amp; 32px</p>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; padding: 2rem;">
+        <div style="text-align: center;">
+          <img src="/logo192.svg" alt="Logo 192" width="192" height="192" style="border-radius: 16px;">
+          <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem;">192×192</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="/favicon.svg" alt="Favicon" width="64" height="64" style="border-radius: 8px;">
+          <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem;">32×32 (scaled)</p>
+        </div>
+      </div>
+      
+      <div class="image-path">
+        <code>/logo192.svg</code> • <code>/favicon.svg</code>
+      </div>
+    </div>
+
+    <div class="tools-card">
+      <h3>Testing Social Previews</h3>
+      
+      <div class="tool-link">
+        <h4>Twitter/X Card Validator</h4>
+        <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener noreferrer">
+          cards-dev.twitter.com/validator
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="tool-link">
+        <h4>Facebook Sharing Debugger</h4>
+        <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">
+          developers.facebook.com/tools/debug
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="tool-link">
+        <h4>LinkedIn Post Inspector</h4>
+        <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener noreferrer">
+          linkedin.com/post-inspector
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

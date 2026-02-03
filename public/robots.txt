@@ -1,0 +1,37 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Specific crawler rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# AI/ML crawlers - restrict training data collection
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+# Sitemap location
+Sitemap: https://noslop.tech/sitemap.xml
+Sitemap: https://noslop.tech/llms.txt

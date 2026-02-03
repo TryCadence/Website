@@ -1,0 +1,10 @@
+{
+  "https": [
+    {
+      "match": "https://noslop.tech/.*",
+      "urls": [
+        "https://github.com/CodeMeAPixel/Cadence"
+      ]
+    }
+  ]
+}

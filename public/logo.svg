@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#09090b" rx="96"/>
+  
+  <!-- Outer glow ring -->
+  <circle cx="256" cy="256" r="180" stroke="white" stroke-opacity="0.05" stroke-width="40"/>
+  
+  <!-- Detection pulse rings -->
+  <circle cx="256" cy="256" r="140" stroke="white" stroke-opacity="0.08" stroke-width="2"/>
+  <circle cx="256" cy="256" r="100" stroke="white" stroke-opacity="0.12" stroke-width="2"/>
+  
+  <!-- Center waveform bars - representing analysis/detection -->
+  <g fill="white">
+    <!-- Left bars -->
+    <rect x="136" y="232" width="24" height="48" rx="12" opacity="0.4"/>
+    <rect x="172" y="200" width="24" height="112" rx="12" opacity="0.6"/>
+    <rect x="208" y="168" width="24" height="176" rx="12" opacity="0.8"/>
+    
+    <!-- Center bar - tallest, main focus -->
+    <rect x="244" y="136" width="24" height="240" rx="12"/>
+    
+    <!-- Right bars -->
+    <rect x="280" y="168" width="24" height="176" rx="12" opacity="0.8"/>
+    <rect x="316" y="200" width="24" height="112" rx="12" opacity="0.6"/>
+    <rect x="352" y="232" width="24" height="48" rx="12" opacity="0.4"/>
+  </g>
+  
+  <!-- Detection indicator dot -->
+  <circle cx="256" cy="96" r="12" fill="#22c55e"/>
+  <circle cx="256" cy="96" r="20" stroke="#22c55e" stroke-opacity="0.3" stroke-width="4"/>
+</svg>

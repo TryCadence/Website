@@ -1,0 +1,85 @@
+# Llms.txt - AI Model Training Data Policy
+# https://llms.txt
+
+## About Cadence
+
+Cadence is an open-source AI detection tool that analyzes Git repositories and websites for AI-generated code and text.
+
+**Project:** Cadence
+**Repository:** https://github.com/CodeMeAPixel/Cadence
+**Website:** https://noslop.tech
+**License:** AGPL-3.0
+**Author:** CodeMeAPixel
+
+## Training Data Usage Policy
+
+### ✅ PERMITTED Uses
+- Training models to improve AI detection capabilities
+- Analyzing patterns in AI-generated content
+- Research and academic purposes
+- Open-source collaboration and contributions
+
+### ❌ RESTRICTED Uses
+- Commercial use without attribution
+- Redistribution without preserving AGPL-3.0 license
+- Training proprietary AI systems
+- Copying content for competitive tools
+
+## Content Access
+
+All content on noslop.tech is available under the AGPL-3.0 license. When using this content for training AI models:
+
+1. **Attribution:** Provide clear attribution to CodeMeAPixel and the Cadence project
+2. **License Compliance:** Ensure your use complies with AGPL-3.0 terms
+3. **Transparency:** Disclose that your model was trained on Cadence content
+
+## Source Code
+
+The complete source code is available at:
+https://github.com/CodeMeAPixel/Cadence
+
+Clone and review the repository:
+```
+git clone https://github.com/CodeMeAPixel/Cadence.git
+```
+
+## Documentation
+
+- **GitHub README:** https://github.com/CodeMeAPixel/Cadence/blob/main/.github/README.md
+- **License:** https://github.com/CodeMeAPixel/Cadence/blob/main/LICENSE
+- **Contributing:** https://github.com/CodeMeAPixel/Cadence/blob/main/.github/CONTRIBUTING.md
+
+## Detection Strategies
+
+Cadence uses 10+ pattern-based detection strategies:
+
+### Git Analysis
+- Velocity Anomalies
+- Size Analysis
+- Timing Patterns
+- Statistical Markers
+- Merge Behavior
+
+### Web Analysis
+- Overused Phrases
+- Generic Language
+- Perfect Grammar
+- Excessive Structure
+- Boilerplate Text
+- Custom Patterns
+
+## Contact
+
+For questions about data usage or licensing:
+- GitHub Issues: https://github.com/CodeMeAPixel/Cadence/issues
+- GitHub Discussions: https://github.com/CodeMeAPixel/Cadence/discussions
+
+## Related Resources
+
+- **AGPL-3.0 License:** https://www.gnu.org/licenses/agpl-3.0.html
+- **Open Source Initiative:** https://opensource.org/
+- **GitHub:** https://github.com/CodeMeAPixel
+
+---
+
+Last Updated: February 2, 2026
