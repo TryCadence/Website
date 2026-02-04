@@ -6,6 +6,8 @@ import {
 	Check,
 	ChevronRight,
 	Code2,
+	FileSearch,
+	GitBranch,
 	GithubIcon,
 	Globe,
 	Layers,

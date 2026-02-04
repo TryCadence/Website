@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ChevronRight, Twitter, Users, Zap } from "lucide-react";
+import {
+	ArrowLeft,
+	ChevronRight,
+	Clock,
+	FileJson,
+	GitBranch,
+	GithubIcon,
+	Globe,
+	Twitter,
+	Users,
+	Zap,
+} from "lucide-react";
 import { LogoIcon } from "../components/Logo";
 import { Footer } from "../components/landing/Footer";
 import { useVersion } from "../lib/useVersion";
