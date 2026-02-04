@@ -411,23 +411,6 @@ The webhook server is a public HTTP endpoint. Risks:
 - Set worker limits
 - Monitor resource usage
 
-## Security Features
-
-### Current
-
-- **HMAC Signature Verification**: GitHub and GitLab webhooks
-- **Input Validation**: Sanitized repository URLs and paths
-- **Resource Limits**: Configurable worker pools
-- **Secure Defaults**: AI disabled by default, localhost binding
-- **Environment Variables**: Secrets via env vars, not files
-
-### Planned
-
-🔄 **Release Signing**: GPG signatures for releases (v0.3.0)
-🔄 **RBAC**: Role-based access control for webhook API (v0.4.0)
-🔄 **Audit Logging**: Security event logging (v0.3.0)
-🔄 **SBOM**: Software Bill of Materials (v0.3.0)
-
 ## Compliance
 
 ### Open Source License
