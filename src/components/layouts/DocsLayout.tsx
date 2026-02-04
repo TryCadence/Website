@@ -1,4 +1,4 @@
-import { ChevronDown, Home, Menu, X, List, Search, Twitter } from "lucide-react";
+import { ChevronDown, Home, Menu, X, List, Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import { LogoIcon } from "../Logo";
 import { Button } from "../ui/Button";
@@ -243,8 +243,8 @@ export function DocsLayout({
 			{/* Mobile Navigation Overlay */}
 			{mobileMenuOpen && (
 				<div className="fixed inset-0 z-30 lg:hidden">
-					<div
-						role="presentation"
+					<button
+						type="button"
 						className="absolute inset-0 bg-black/60 backdrop-blur-sm"
 						onClick={() => setMobileMenuOpen(false)}
 						onKeyDown={(e) => {

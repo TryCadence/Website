@@ -148,7 +148,6 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
 							<span
 								className="text-white/70 break-words"
-								// biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown formatting
 								dangerouslySetInnerHTML={{
 									__html: item
 										.replace(
@@ -267,8 +266,7 @@ function ReleaseCard({
 						<div className="prose prose-invert prose-sm max-w-none">
 							<div
 								className="text-white/70 whitespace-pre-wrap"
-								// biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown content
-								dangerouslySetInnerHTML={{
+							dangerouslySetInnerHTML={{
 									__html: release.body
 										.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
 										.replace(

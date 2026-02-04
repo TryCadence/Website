@@ -2,13 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
 	ArrowLeft,
 	ChevronRight,
-	Clock,
-	ExternalLink,
-	FileJson,
-	GitBranch,
-	GithubIcon,
-	Globe,
-	TrendingUp,
 	Twitter,
 	Users,
 	Zap,

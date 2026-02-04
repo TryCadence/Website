@@ -49,7 +49,6 @@ export function DetectionStrategies() {
 	const [activeTab, setActiveTab] = useState<"git" | "web">("git");
 
 	const strategies = activeTab === "git" ? gitStrategies : webPatterns;
-	const count = activeTab === "git" ? 18 : 20;
 
 	return (
 		<section className="py-20 px-6">

@@ -97,7 +97,7 @@ function Callout({ type, children }: { type: "note" | "tip" | "warning"; childre
 	);
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: react-markdown requires any type for components
+
 const markdownComponents: any = {
 	h1: ({ children }: any) => {
 		const text = extractText(children);
