@@ -1,6 +1,6 @@
 import { AlertTriangle, ChevronRight, Github, Terminal } from "lucide-react";
-import { Button } from "../ui/Button";
 import { useVersion } from "../../lib/useVersion";
+import { Button } from "../ui/Button";
 
 export function Hero() {
 	const { version } = useVersion();

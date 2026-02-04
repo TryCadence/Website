@@ -3,40 +3,34 @@ import { createFileRoute } from "@tanstack/react-router";
 const SITE_URL = "https://noslop.tech";
 const DOCS_IMAGE = `${SITE_URL}/og-docs.png`;
 
+import aiConfigurationMd from "../../../docs/ai/configuration.md?raw";
+import aiExamplesMd from "../../../docs/ai/examples.md?raw";
+import aiIndexMd from "../../../docs/ai/index.md?raw";
+import analysisGitMd from "../../../docs/analysis/git.md?raw";
+import analysisIndexMd from "../../../docs/analysis/index.md?raw";
+import analysisRepositoryMd from "../../../docs/analysis/repository.md?raw";
+import analysisWebMd from "../../../docs/analysis/web.md?raw";
+import cliCommandsMdNew from "../../../docs/cli/commands.md?raw";
+import cliDetectionStrategiesMd from "../../../docs/cli/detection-strategies.md?raw";
+import cliIndexMd from "../../../docs/cli/index.md?raw";
+import communityContributingMd from "../../../docs/community/contributing.md?raw";
+import communityIndexMd from "../../../docs/community/index.md?raw";
+import communitySecurityMd from "../../../docs/community/security.md?raw";
+import gettingStartedConfigurationMd from "../../../docs/getting-started/configuration.md?raw";
 // Import all markdown files statically for Cloudflare Workers compatibility
 // Getting Started section
 import gettingStartedIndexMd from "../../../docs/getting-started/index.md?raw";
 import gettingStartedInstallationMd from "../../../docs/getting-started/installation.md?raw";
-import gettingStartedQuickStartMd from "../../../docs/getting-started/quick-start.md?raw";
 import gettingStartedQuickReferenceMd from "../../../docs/getting-started/quick-reference.md?raw";
-import gettingStartedConfigurationMd from "../../../docs/getting-started/configuration.md?raw";
-
-import cliIndexMd from "../../../docs/cli/index.md?raw";
-import cliCommandsMdNew from "../../../docs/cli/commands.md?raw";
-import cliDetectionStrategiesMd from "../../../docs/cli/detection-strategies.md?raw";
-
-import analysisIndexMd from "../../../docs/analysis/index.md?raw";
-import analysisRepositoryMd from "../../../docs/analysis/repository.md?raw";
-import analysisGitMd from "../../../docs/analysis/git.md?raw";
-import analysisWebMd from "../../../docs/analysis/web.md?raw";
-
-import aiIndexMd from "../../../docs/ai/index.md?raw";
-import aiConfigurationMd from "../../../docs/ai/configuration.md?raw";
-import aiExamplesMd from "../../../docs/ai/examples.md?raw";
-
-import integrationsIndexMd from "../../../docs/integrations/index.md?raw";
+import gettingStartedQuickStartMd from "../../../docs/getting-started/quick-start.md?raw";
 import integrationsAgentSkillsMd from "../../../docs/integrations/agent-skills.md?raw";
+import integrationsIndexMd from "../../../docs/integrations/index.md?raw";
 import integrationsWebhooksMd from "../../../docs/integrations/webhooks.md?raw";
-
-import referenceIndexMd from "../../../docs/reference/index.md?raw";
 import referenceAdvancedConfigMd from "../../../docs/reference/advanced-configuration.md?raw";
 import referenceBuildDevMd from "../../../docs/reference/build-development.md?raw";
-import referenceTroubleshootingMd from "../../../docs/reference/troubleshooting.md?raw";
 import referenceDisclaimerMd from "../../../docs/reference/disclaimer.md?raw";
-
-import communityIndexMd from "../../../docs/community/index.md?raw";
-import communityContributingMd from "../../../docs/community/contributing.md?raw";
-import communitySecurityMd from "../../../docs/community/security.md?raw";
+import referenceIndexMd from "../../../docs/reference/index.md?raw";
+import referenceTroubleshootingMd from "../../../docs/reference/troubleshooting.md?raw";
 
 import { DocsLayout } from "../../components/layouts/DocsLayout";
 import { MarkdownRenderer } from "../../components/MarkdownRenderer";

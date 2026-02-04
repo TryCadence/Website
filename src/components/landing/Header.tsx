@@ -1,8 +1,8 @@
 import { Github, Menu, Twitter, X } from "lucide-react";
 import { useState } from "react";
+import { useVersion } from "../../lib/useVersion";
 import { LogoIcon } from "../Logo";
 import { Button } from "../ui/Button";
-import { useVersion } from "../../lib/useVersion";
 
 export function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

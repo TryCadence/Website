@@ -1,8 +1,8 @@
-import { ChevronDown, Home, Menu, X, List, Search } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ChevronDown, Home, List, Menu, Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useVersion } from "../../lib/useVersion";
 import { LogoIcon } from "../Logo";
 import { Button } from "../ui/Button";
-import { useVersion } from "../../lib/useVersion";
 
 interface LayoutProps {
 	children: React.ReactNode;
