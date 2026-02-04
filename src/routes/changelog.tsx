@@ -57,8 +57,8 @@ function parseReleaseBody(body: string): ParsedSection[] {
 		const firstLine = lines[0];
 
 		// Extract section title from first line
-		let sectionTitle = firstLine;
-		let sectionContent = lines.slice(1).join("\n").trim();
+		const sectionTitle = firstLine;
+		const sectionContent = lines.slice(1).join("\n").trim();
 
 		let type: ParsedSection["type"] = "other";
 		if (firstLine === "Added") {
@@ -121,7 +121,7 @@ function parseReleaseBody(body: string): ParsedSection[] {
 			else if (
 				line.startsWith("  - ") ||
 				line.startsWith("  * ") ||
-				/^  \d+\.\s/.test(line)
+				/^ {2}\d+\.\s/.test(line)
 			) {
 				if (currentItem) {
 					currentItem += `\n${line.trim()}`;
@@ -196,7 +196,7 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 					<ChevronDown className="w-4 h-4 text-white/40 shrink-0" />
 				) : (
 					<ChevronRight className="w-4 h-4 text-white/40 shrink-0" />
-				)}	
+				)}
 			</button>
 
 			{expanded && (
@@ -205,10 +205,12 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 						<div key={item} className="flex gap-2 md:gap-3 text-sm">
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
 							<div className="text-white/70 wrap-break-word flex-1">
-								{item.split("\n").map((line, idx) => (
+								{item.split("\n").map((line) => (
 									<div
-										key={idx}
-										className={idx > 0 ? "ml-2 text-white/60" : ""}
+										key={line}
+										className={
+											line === item.split("\n")[0] ? "" : "ml-2 text-white/60"
+										}
 										dangerouslySetInnerHTML={{
 											__html: line
 												.replace(
@@ -284,7 +286,7 @@ function ReleaseCard({
 								Latest
 							</span>
 						)}
-						{release.prerelease  && (
+						{release.prerelease && (
 							<span className="px-2 py-0.5 text-xs font-medium bg-amber-500/20 text-amber-400 rounded-full border border-amber-500/30">
 								Pre-release
 							</span>
@@ -492,7 +494,7 @@ function ChangelogPage() {
 								releases
 							</div>
 							<div className="flex items-center gap-2 text-sm text-white/50">
-							<div className="w-2 h-2 rounded-full bg-emerald-400" />
+								<div className="w-2 h-2 rounded-full bg-emerald-400" />
 								Latest:{" "}
 								<span className="text-white font-medium">
 									{releases[0]?.tag_name}
@@ -532,55 +534,57 @@ function ChangelogPage() {
 				)}
 
 				{!loading && !error && releases.length > 0 && (
-				<>
-					<div className="space-y-0">
-						{paginatedReleases.map((release, idx) => (
-							<ReleaseCard
-								key={release.id}
-								release={release}
-								isLatest={idx === 0 && page === 1}
-							/>
-						))}
-					</div>
+					<>
+						<div className="space-y-0">
+							{paginatedReleases.map((release, idx) => (
+								<ReleaseCard
+									key={release.id}
+									release={release}
+									isLatest={idx === 0 && page === 1}
+								/>
+							))}
+						</div>
 
-					{/* Pagination */}
-					{totalPages > 1 && (
-						<div className="flex flex-wrap items-center justify-center gap-2 mt-8 pt-8 border-t border-white/5">
-							<button
-								type="button"
-								onClick={() => setPage(Math.max(1, page - 1))}
-								disabled={page === 1}
-								className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-							>
-								Previous
-							</button>
-
-							{Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+						{/* Pagination */}
+						{totalPages > 1 && (
+							<div className="flex flex-wrap items-center justify-center gap-2 mt-8 pt-8 border-t border-white/5">
 								<button
 									type="button"
-									key={p}
-									onClick={() => setPage(p)}
-									className={`w-8 h-8 text-sm rounded-md border transition-colors ${
-										p === page
-											? "border-white/20 bg-white/10 text-white font-medium"
-											: "border-white/10 text-white/60 hover:bg-white/5"
-									}`}
+									onClick={() => setPage(Math.max(1, page - 1))}
+									disabled={page === 1}
+									className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
 								>
-									{p}
+									Previous
 								</button>
-							))}
 
-							<button
-								type="button"
-								onClick={() => setPage(Math.min(totalPages, page + 1))}
-								disabled={page === totalPages}
-								className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-							>
-								Next
-							</button>
-						</div>
-					)}
-				</>
+								{Array.from({ length: totalPages }, (_, i) => i + 1).map(
+									(p) => (
+										<button
+											type="button"
+											key={p}
+											onClick={() => setPage(p)}
+											className={`w-8 h-8 text-sm rounded-md border transition-colors ${
+												p === page
+													? "border-white/20 bg-white/10 text-white font-medium"
+													: "border-white/10 text-white/60 hover:bg-white/5"
+											}`}
+										>
+											{p}
+										</button>
+									),
+								)}
+
+								<button
+									type="button"
+									onClick={() => setPage(Math.min(totalPages, page + 1))}
+									disabled={page === totalPages}
+									className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+								>
+									Next
+								</button>
+							</div>
+						)}
+					</>
 				)}
 
 				{/* End of timeline - only show on last page */}
