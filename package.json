@@ -9,7 +9,8 @@
     "test": "vitest run",
     "format": "biome format",
     "format:fix": "biome format --write",
-    "format:check": "biome format --check",
+    "format:check": "biome check",
+    "format:apply": "biome check --fix",
     "lint": "biome lint",
     "check": "biome check",
     "deploy": "npm run build && wrangler deploy"

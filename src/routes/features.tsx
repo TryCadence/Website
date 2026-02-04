@@ -16,10 +16,10 @@ import {
 	Webhook,
 	Zap,
 } from "lucide-react";
+import { useState } from "react";
 import { LogoIcon } from "../components/Logo";
 import { Footer } from "../components/landing/Footer";
 import { useVersion } from "../lib/useVersion";
-import { useState } from "react";
 
 const coreFeatures = [
 	{

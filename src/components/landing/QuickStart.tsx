@@ -1,7 +1,6 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import { Check, Copy, GitBranch, Globe, Terminal } from "lucide-react";
-import { useId } from "react";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 type TokenType = "command" | "flag" | "path" | "comment" | "string" | "text";
 
