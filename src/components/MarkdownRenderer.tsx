@@ -59,7 +59,13 @@ function slugify(text: string): string {
 }
 
 // Callout/Admonition component
-function Callout({ type, children }: { type: "note" | "tip" | "warning"; children: React.ReactNode }) {
+function Callout({
+	type,
+	children,
+}: {
+	type: "note" | "tip" | "warning";
+	children: React.ReactNode;
+}) {
 	const styles = {
 		note: {
 			bg: "bg-blue-500/10",
@@ -90,23 +96,29 @@ function Callout({ type, children }: { type: "note" | "tip" | "warning"; childre
 		<div className={`${style.bg} border ${style.border} rounded-lg p-4 my-4`}>
 			<div className="flex items-center gap-2 mb-2">
 				{style.icon}
-				<span className={`font-semibold text-sm ${style.titleColor}`}>{style.title}</span>
+				<span className={`font-semibold text-sm ${style.titleColor}`}>
+					{style.title}
+				</span>
 			</div>
 			<div className="text-sm text-white/70 [&>p]:mb-0">{children}</div>
 		</div>
 	);
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: react-markdown requires any type for components
 const markdownComponents: any = {
 	h1: ({ children }: any) => {
 		const text = extractText(children);
 		const id = slugify(text);
 		return (
-			<h1 id={id} className="group text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 mt-6 sm:mt-8 scroll-mt-24">
+			<h1
+				id={id}
+				className="group text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 mt-6 sm:mt-8 scroll-mt-24"
+			>
 				<a href={`#${id}`} className="no-underline hover:no-underline">
 					{children}
-					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">#</span>
+					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">
+						#
+					</span>
 				</a>
 			</h1>
 		);
@@ -115,10 +127,15 @@ const markdownComponents: any = {
 		const text = extractText(children);
 		const id = slugify(text);
 		return (
-			<h2 id={id} className="group text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 mt-8 sm:mt-10 border-b border-white/10 pb-2 scroll-mt-24">
+			<h2
+				id={id}
+				className="group text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 mt-8 sm:mt-10 border-b border-white/10 pb-2 scroll-mt-24"
+			>
 				<a href={`#${id}`} className="no-underline hover:no-underline">
 					{children}
-					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">#</span>
+					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">
+						#
+					</span>
 				</a>
 			</h2>
 		);
@@ -127,10 +144,15 @@ const markdownComponents: any = {
 		const text = extractText(children);
 		const id = slugify(text);
 		return (
-			<h3 id={id} className="group text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3 mt-6 sm:mt-8 scroll-mt-24">
+			<h3
+				id={id}
+				className="group text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3 mt-6 sm:mt-8 scroll-mt-24"
+			>
 				<a href={`#${id}`} className="no-underline hover:no-underline">
 					{children}
-					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">#</span>
+					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">
+						#
+					</span>
 				</a>
 			</h3>
 		);
@@ -139,10 +161,15 @@ const markdownComponents: any = {
 		const text = extractText(children);
 		const id = slugify(text);
 		return (
-			<h4 id={id} className="group text-base sm:text-lg font-semibold text-white mb-2 mt-4 scroll-mt-24">
+			<h4
+				id={id}
+				className="group text-base sm:text-lg font-semibold text-white mb-2 mt-4 scroll-mt-24"
+			>
 				<a href={`#${id}`} className="no-underline hover:no-underline">
 					{children}
-					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">#</span>
+					<span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-white/30">
+						#
+					</span>
 				</a>
 			</h4>
 		);
@@ -161,9 +188,7 @@ const markdownComponents: any = {
 		</a>
 	),
 	ul: ({ children }: any) => (
-		<ul className="list-none space-y-2 mb-4 ml-1">
-			{children}
-		</ul>
+		<ul className="list-none space-y-2 mb-4 ml-1">{children}</ul>
 	),
 	ol: ({ children }: any) => (
 		<ol className="list-decimal list-outside ml-5 space-y-2 mb-4 text-white/70 marker:text-emerald-400/70">
@@ -173,9 +198,7 @@ const markdownComponents: any = {
 	li: ({ children, ordered }: any) => {
 		if (ordered) {
 			return (
-				<li className="text-sm sm:text-base text-white/70 pl-1">
-					{children}
-				</li>
+				<li className="text-sm sm:text-base text-white/70 pl-1">{children}</li>
 			);
 		}
 		return (
@@ -222,12 +245,16 @@ const markdownComponents: any = {
 		// Check if this is a callout (starts with [!NOTE], [!TIP], [!WARNING])
 		const text = extractText(children);
 		const calloutMatch = text.match(/^\[!(NOTE|TIP|WARNING)\]/i);
-		
+
 		if (calloutMatch) {
 			const type = calloutMatch[1].toLowerCase() as "note" | "tip" | "warning";
 			// Remove the callout marker from the content
 			const cleanContent = text.replace(/^\[!(NOTE|TIP|WARNING)\]\s*/i, "");
-			return <Callout type={type}><p>{cleanContent}</p></Callout>;
+			return (
+				<Callout type={type}>
+					<p>{cleanContent}</p>
+				</Callout>
+			);
 		}
 
 		return (
@@ -255,9 +282,7 @@ const markdownComponents: any = {
 		</th>
 	),
 	td: ({ children }: any) => (
-		<td className="px-4 py-3 text-white/70 min-w-[100px]">
-			{children}
-		</td>
+		<td className="px-4 py-3 text-white/70 min-w-[100px]">{children}</td>
 	),
 	tr: ({ children }: any) => (
 		<tr className="hover:bg-white/2 transition-colors">{children}</tr>
@@ -270,9 +295,9 @@ const markdownComponents: any = {
 	),
 	hr: () => <hr className="border-white/10 my-8" />,
 	img: ({ src, alt }: any) => (
-		<img 
-			src={src} 
-			alt={alt} 
+		<img
+			src={src}
+			alt={alt}
 			className="rounded-lg border border-white/10 my-4 max-w-full h-auto"
 		/>
 	),

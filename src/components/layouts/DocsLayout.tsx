@@ -1,4 +1,4 @@
-import { ChevronDown, Home, Menu, X, List, Search, Twitter } from "lucide-react";
+import { ChevronDown, Home, Menu, X, List, Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import { LogoIcon } from "../Logo";
 import { Button } from "../ui/Button";
@@ -34,7 +34,10 @@ const navSections: NavSection[] = [
 			{ href: "/docs/getting-started", label: "Overview" },
 			{ href: "/docs/getting-started/installation", label: "Installation" },
 			{ href: "/docs/getting-started/quick-start", label: "Quick Start" },
-			{ href: "/docs/getting-started/quick-reference", label: "Quick Reference" },
+			{
+				href: "/docs/getting-started/quick-reference",
+				label: "Quick Reference",
+			},
 			{ href: "/docs/getting-started/configuration", label: "Configuration" },
 		],
 	},
@@ -85,8 +88,14 @@ const navSections: NavSection[] = [
 		description: "Advanced configuration",
 		links: [
 			{ href: "/docs/reference", label: "Overview" },
-			{ href: "/docs/reference/advanced-configuration", label: "Advanced Configuration" },
-			{ href: "/docs/reference/build-development", label: "Build & Development" },
+			{
+				href: "/docs/reference/advanced-configuration",
+				label: "Advanced Configuration",
+			},
+			{
+				href: "/docs/reference/build-development",
+				label: "Build & Development",
+			},
 			{ href: "/docs/reference/troubleshooting", label: "Troubleshooting" },
 			{ href: "/docs/reference/disclaimer", label: "Disclaimer" },
 		],
@@ -157,7 +166,7 @@ export function DocsLayout({
 					}
 				}
 			},
-			{ rootMargin: "-80px 0px -80% 0px" }
+			{ rootMargin: "-80px 0px -80% 0px" },
 		);
 
 		for (const item of toc) {
@@ -243,8 +252,8 @@ export function DocsLayout({
 			{/* Mobile Navigation Overlay */}
 			{mobileMenuOpen && (
 				<div className="fixed inset-0 z-30 lg:hidden">
-					<div
-						role="presentation"
+					<button
+						type="button"
 						className="absolute inset-0 bg-black/60 backdrop-blur-sm"
 						onClick={() => setMobileMenuOpen(false)}
 						onKeyDown={(e) => {
@@ -254,7 +263,9 @@ export function DocsLayout({
 					<nav className="absolute left-0 top-[57px] bottom-0 w-[min(80vw,320px)] bg-[#09090b] border-r border-white/10 overflow-y-auto">
 						<div className="p-4">
 							<MobileSectionSelector
-								currentSection={currentSection}							currentSlug={slug}								onClose={() => setMobileMenuOpen(false)}
+								currentSection={currentSection}
+								currentSlug={slug}
+								onClose={() => setMobileMenuOpen(false)}
 							/>
 						</div>
 					</nav>
@@ -336,7 +347,12 @@ export function DocsLayout({
 						{/* Page Links for Current Section */}
 						<nav className="p-4 space-y-1">
 							{currentSection.links.map((link) => (
-								<PageLink key={link.href} href={link.href} label={link.label} currentSlug={slug} />
+								<PageLink
+									key={link.href}
+									href={link.href}
+									label={link.label}
+									currentSlug={slug}
+								/>
 							))}
 						</nav>
 					</div>
@@ -346,7 +362,11 @@ export function DocsLayout({
 				<main className="flex-1 min-w-0">
 					<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 						{/* Breadcrumb */}
-					<Breadcrumb title={title} currentSection={currentSection} currentSlug={slug} />
+						<Breadcrumb
+							title={title}
+							currentSection={currentSection}
+							currentSlug={slug}
+						/>
 						{/* Title and Description */}
 						<div className="mb-8 lg:mb-12">
 							<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
@@ -383,11 +403,7 @@ export function DocsLayout({
 										key={item.id}
 										href={`#${item.id}`}
 										className={`block text-sm py-1 transition-colors ${
-											item.level === 3
-												? "pl-3"
-												: item.level === 4
-													? "pl-6"
-													: ""
+											item.level === 3 ? "pl-3" : item.level === 4 ? "pl-6" : ""
 										} ${
 											activeId === item.id
 												? "text-emerald-400 font-medium"
@@ -406,7 +422,15 @@ export function DocsLayout({
 	);
 }
 
-function PageLink({ href, label, currentSlug }: { href: string; label: string; currentSlug?: string }) {
+function PageLink({
+	href,
+	label,
+	currentSlug,
+}: {
+	href: string;
+	label: string;
+	currentSlug?: string;
+}) {
 	const isActive = currentSlug && href === `/docs/${currentSlug}`;
 
 	return (

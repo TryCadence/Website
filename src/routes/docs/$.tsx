@@ -44,46 +44,46 @@ import { MarkdownRenderer } from "../../components/MarkdownRenderer";
 const docsMap: Record<string, string> = {
 	// Section index pages
 	"getting-started": gettingStartedIndexMd,
-	"cli": cliIndexMd,
-	"analysis": analysisIndexMd,
-	"integrations": integrationsIndexMd,
-	"reference": referenceIndexMd,
-	"community": communityIndexMd,
-	
+	cli: cliIndexMd,
+	analysis: analysisIndexMd,
+	integrations: integrationsIndexMd,
+	reference: referenceIndexMd,
+	community: communityIndexMd,
+
 	// Getting Started section
 	"getting-started/installation": gettingStartedInstallationMd,
 	"getting-started/quick-start": gettingStartedQuickStartMd,
 	"getting-started/quick-reference": gettingStartedQuickReferenceMd,
 	"getting-started/configuration": gettingStartedConfigurationMd,
-	
+
 	// CLI section
 	"cli/commands": cliCommandsMdNew,
 	"cli/detection-strategies": cliDetectionStrategiesMd,
-	
+
 	// Analysis section
 	"analysis/repository": analysisRepositoryMd,
 	"analysis/git": analysisGitMd,
 	"analysis/web": analysisWebMd,
-	
+
 	// AI section
-	"ai": aiIndexMd,
+	ai: aiIndexMd,
 	"ai/configuration": aiConfigurationMd,
 	"ai/examples": aiExamplesMd,
-	
+
 	// Integrations section
 	"integrations/agent-skills": integrationsAgentSkillsMd,
 	"integrations/webhooks": integrationsWebhooksMd,
-	
+
 	// Reference section
 	"reference/advanced-configuration": referenceAdvancedConfigMd,
 	"reference/build-development": referenceBuildDevMd,
 	"reference/troubleshooting": referenceTroubleshootingMd,
 	"reference/disclaimer": referenceDisclaimerMd,
-	
+
 	// Community section
 	"community/contributing": communityContributingMd,
 	"community/security": communitySecurityMd,
-	
+
 	// Legacy routes (redirect to new locations)
 	installation: gettingStartedInstallationMd,
 	"quick-start": gettingStartedQuickStartMd,
@@ -124,7 +124,7 @@ function parseMarkdown(content: string) {
 	// No frontmatter - extract title from first # heading
 	const headingMatch = normalized.match(/^#\s+(.+)$/m);
 	const title = headingMatch?.[1]?.trim() || "Documentation";
-	
+
 	// Extract description from first paragraph after the heading
 	const descriptionMatch = normalized.match(/^#\s+.+\n\n(.+?)(?:\n\n|$)/m);
 	const description = descriptionMatch?.[1]?.trim() || "";
@@ -178,7 +178,12 @@ function DocsPage() {
 	const { markdown, title, description, slug } = Route.useLoaderData();
 
 	return (
-		<DocsLayout title={title} description={description} content={markdown} slug={slug}>
+		<DocsLayout
+			title={title}
+			description={description}
+			content={markdown}
+			slug={slug}
+		>
 			<MarkdownRenderer content={markdown} />
 		</DocsLayout>
 	);

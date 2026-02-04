@@ -31,8 +31,9 @@ export function Hero() {
 
 				{/* Tagline */}
 				<p className="text-lg md:text-xl text-white/70 mb-4">
-					Securing the SDLC through <span className="text-white/90">deep pattern detection</span>{" "}
-					and <span className="text-white/90">statistical markers.</span>
+					Securing the SDLC through{" "}
+					<span className="text-white/90">deep pattern detection</span> and{" "}
+					<span className="text-white/90">statistical markers.</span>
 				</p>
 
 				{/* Disclaimer Alert */}

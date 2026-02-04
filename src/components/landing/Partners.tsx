@@ -28,9 +28,9 @@ export function Partners() {
 					<div className="flex overflow-hidden">
 						{/* First set */}
 						<div className="flex animate-marquee">
-						{partners.map((partner) => (
-							<a
-								key={`first-${partner.name}`}
+							{partners.map((partner) => (
+								<a
+									key={`first-${partner.name}`}
 									href={partner.url}
 									target="_blank"
 									rel="noopener noreferrer"
@@ -45,9 +45,9 @@ export function Partners() {
 
 						{/* Duplicate set for seamless loop */}
 						<div className="flex animate-marquee" aria-hidden="true">
-						{partners.map((partner) => (
-							<a
-								key={`second-${partner.name}`}
+							{partners.map((partner) => (
+								<a
+									key={`second-${partner.name}`}
 									href={partner.url}
 									target="_blank"
 									rel="noopener noreferrer"

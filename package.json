@@ -8,6 +8,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "format": "biome format",
+    "format:fix": "biome format --write",
+    "format:check": "biome format --check",
     "lint": "biome lint",
     "check": "biome check",
     "deploy": "npm run build && wrangler deploy"

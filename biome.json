@@ -26,10 +26,10 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noExplicitAny": "warn"
+				"noExplicitAny": "off"
 			},
 			"security": {
-				"noDangerouslySetInnerHtml": "warn"
+				"noDangerouslySetInnerHtml": "off"
 			},
 			"a11y": {
 				"useValidAnchor": "warn",

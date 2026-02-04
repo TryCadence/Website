@@ -21,7 +21,7 @@ async function fetchLatestVersion(): Promise<string> {
 			headers: {
 				Accept: "application/vnd.github.v3+json",
 			},
-		}
+		},
 	)
 		.then((response) => {
 			if (!response.ok) {
