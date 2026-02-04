@@ -196,7 +196,7 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 					<ChevronDown className="w-4 h-4 text-white/40 shrink-0" />
 				) : (
 					<ChevronRight className="w-4 h-4 text-white/40 shrink-0" />
-				)}
+				)}	
 			</button>
 
 			{expanded && (
@@ -204,7 +204,7 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 					{section.items.map((item) => (
 						<div key={item} className="flex gap-2 md:gap-3 text-sm">
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
-							<div className="text-white/70 break-words flex-1">
+							<div className="text-white/70 wrap-break-word flex-1">
 								{item.split("\n").map((line, idx) => (
 									<div
 										key={idx}
