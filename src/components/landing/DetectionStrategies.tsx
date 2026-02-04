@@ -19,7 +19,10 @@ const gitStrategies = [
 	{ name: "Statistical Anomalies", desc: "Outlier detection in metrics" },
 	{ name: "Timing Anomalies", desc: "Unusual time patterns" },
 	{ name: "Emoji Usage", desc: "Excessive or unusual emoji patterns" },
-	{ name: "Special Characters", desc: "Overused hyphens, dashes, unusual punctuation" },
+	{
+		name: "Special Characters",
+		desc: "Overused hyphens, dashes, unusual punctuation",
+	},
 ];
 
 const webPatterns = [
@@ -34,12 +37,24 @@ const webPatterns = [
 	{ name: "Uniform Sentences", desc: "Consistent sentence length" },
 	{ name: "AI Vocabulary", desc: "Characteristic AI word choices" },
 	{ name: "Emoji Overuse", desc: "Excessive or misplaced emojis" },
-	{ name: "Special Characters", desc: "Unusual special character usage patterns" },
-	{ name: "Missing Alt Text", desc: "Images without accessibility descriptions" },
+	{
+		name: "Special Characters",
+		desc: "Unusual special character usage patterns",
+	},
+	{
+		name: "Missing Alt Text",
+		desc: "Images without accessibility descriptions",
+	},
 	{ name: "Semantic HTML", desc: "Divs instead of semantic tags" },
-	{ name: "Accessibility Markers", desc: "Missing aria-labels, roles, lang attributes" },
+	{
+		name: "Accessibility Markers",
+		desc: "Missing aria-labels, roles, lang attributes",
+	},
 	{ name: "Heading Hierarchy", desc: "Non-sequential heading levels" },
-	{ name: "Hardcoded Values", desc: "Fixed pixels, colors instead of variables" },
+	{
+		name: "Hardcoded Values",
+		desc: "Fixed pixels, colors instead of variables",
+	},
 	{ name: "Form Issues", desc: "Missing labels, improper input types" },
 	{ name: "Generic Link Text", desc: '"Click here", "Read more" patterns' },
 	{ name: "Generic Styling", desc: "Default colors, no custom theming" },
@@ -58,7 +73,7 @@ export function DetectionStrategies() {
 						Detection Strategies
 					</h2>
 					<p className="text-base text-white/50 max-w-2xl mx-auto">
-					46 specialized detection strategies combining pattern analysis with
+						46 specialized detection strategies combining pattern analysis with
 						statistical markers
 					</p>
 				</div>
@@ -76,7 +91,9 @@ export function DetectionStrategies() {
 					>
 						<GitBranch className="w-4 h-4" />
 						Git Repository
-						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">18</span>
+						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">
+							18
+						</span>
 					</button>
 					<button
 						type="button"
@@ -89,7 +106,9 @@ export function DetectionStrategies() {
 					>
 						<Globe className="w-4 h-4" />
 						Web Content
-					<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">20</span>
+						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">
+							20
+						</span>
 					</button>
 				</div>
 

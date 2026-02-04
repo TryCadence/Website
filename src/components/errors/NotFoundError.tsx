@@ -43,9 +43,7 @@ export function NotFoundError() {
 
 					{/* Suggestions */}
 					<div className="bg-white/2 border border-white/5 rounded-lg p-6 mb-8 text-left">
-						<p className="text-sm text-white/50 mb-3">
-							Try these:
-						</p>
+						<p className="text-sm text-white/50 mb-3">Try these:</p>
 						<ul className="space-y-2 text-sm text-white/60">
 							<li>• Check the URL for typos</li>
 							<li>• Try going back to the homepage</li>

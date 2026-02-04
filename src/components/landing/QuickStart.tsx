@@ -97,7 +97,10 @@ function CodeBlock({ code }: { code: string }) {
 										<span className="text-[#c678dd] mr-1">$</span>
 									)}
 									{tokenize(line).map((token, j) => (
-									<span key={`token-${j}-${token.type}`} className={tokenColors[token.type]}>
+										<span
+											key={`token-${j}-${token.type}`}
+											className={tokenColors[token.type]}
+										>
 											{token.value}
 										</span>
 									))}
@@ -112,7 +115,7 @@ function CodeBlock({ code }: { code: string }) {
 }
 
 export function QuickStart() {
-	const quickstartId = useId()
+	const quickstartId = useId();
 	return (
 		<section id={`quickstart-${quickstartId}`} className="py-20 px-6">
 			<div className="max-w-4xl mx-auto">

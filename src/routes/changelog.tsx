@@ -130,7 +130,9 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 				>
 					{getSectionIcon(section.type)}
 				</span>
-				<span className="flex-1 font-medium text-white text-sm md:text-base truncate">{section.title}</span>
+				<span className="flex-1 font-medium text-white text-sm md:text-base truncate">
+					{section.title}
+				</span>
 				<span className="text-xs text-white/40 mr-1 md:mr-2 shrink-0">
 					{section.items.length}
 				</span>
@@ -143,8 +145,8 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 
 			{expanded && (
 				<div className="px-3 md:px-4 py-3 space-y-2 border-t border-white/5">
-						{section.items.map((item) => (
-							<div key={item} className="flex gap-2 md:gap-3 text-sm">
+					{section.items.map((item) => (
+						<div key={item} className="flex gap-2 md:gap-3 text-sm">
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
 							<span
 								className="text-white/70 break-words"
@@ -227,7 +229,7 @@ function ReleaseCard({
 							</span>
 						)}
 					</div>
-					
+
 					{/* Meta info - stacked on mobile */}
 					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4 text-sm text-white/40">
 						<div className="flex items-center gap-1.5">
@@ -258,15 +260,15 @@ function ReleaseCard({
 
 					{sections.length > 0 ? (
 						<div className="space-y-3">
-						{sections.map((section) => (
-							<ReleaseSection key={section.title} section={section} />
+							{sections.map((section) => (
+								<ReleaseSection key={section.title} section={section} />
 							))}
 						</div>
 					) : release.body ? (
 						<div className="prose prose-invert prose-sm max-w-none">
 							<div
 								className="text-white/70 whitespace-pre-wrap"
-							dangerouslySetInnerHTML={{
+								dangerouslySetInnerHTML={{
 									__html: release.body
 										.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
 										.replace(
@@ -396,7 +398,9 @@ function ChangelogPage() {
 						Back to Home
 					</Link>
 
-					<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Changelog</h1>
+					<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+						Changelog
+					</h1>
 					<p className="text-base md:text-lg text-white/60 max-w-2xl">
 						All releases for Cadence, pulled directly from{" "}
 						<a

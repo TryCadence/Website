@@ -121,7 +121,10 @@ const gitStrategies = [
 	{ name: "Statistical Anomalies", desc: "Outlier detection in metrics" },
 	{ name: "Timing Anomalies", desc: "Unusual time patterns" },
 	{ name: "Emoji Usage", desc: "Excessive or unusual emoji patterns" },
-	{ name: "Special Characters", desc: "Overused hyphens, dashes, unusual punctuation" },
+	{
+		name: "Special Characters",
+		desc: "Overused hyphens, dashes, unusual punctuation",
+	},
 ];
 
 const webStrategies = [
@@ -136,12 +139,24 @@ const webStrategies = [
 	{ name: "Uniform Sentences", desc: "Consistent sentence length" },
 	{ name: "AI Vocabulary", desc: "Characteristic AI word choices" },
 	{ name: "Emoji Overuse", desc: "Excessive or misplaced emojis" },
-	{ name: "Special Characters", desc: "Unusual special character usage patterns" },
-	{ name: "Missing Alt Text", desc: "Images without accessibility descriptions" },
+	{
+		name: "Special Characters",
+		desc: "Unusual special character usage patterns",
+	},
+	{
+		name: "Missing Alt Text",
+		desc: "Images without accessibility descriptions",
+	},
 	{ name: "Semantic HTML", desc: "Divs instead of semantic tags" },
-	{ name: "Accessibility Markers", desc: "Missing aria-labels, roles, lang attributes" },
+	{
+		name: "Accessibility Markers",
+		desc: "Missing aria-labels, roles, lang attributes",
+	},
 	{ name: "Heading Hierarchy", desc: "Non-sequential heading levels" },
-	{ name: "Hardcoded Values", desc: "Fixed pixels, colors instead of variables" },
+	{
+		name: "Hardcoded Values",
+		desc: "Fixed pixels, colors instead of variables",
+	},
 	{ name: "Form Issues", desc: "Missing labels, improper input types" },
 	{ name: "Generic Link Text", desc: '"Click here", "Read more" patterns' },
 	{ name: "Generic Styling", desc: "Default colors, no custom theming" },
@@ -176,7 +191,9 @@ function DetectionStrategiesSection() {
 					>
 						<GitBranch className="w-4 h-4" />
 						Git Repository
-						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">16</span>
+						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">
+							16
+						</span>
 					</button>
 					<button
 						type="button"
@@ -189,7 +206,9 @@ function DetectionStrategiesSection() {
 					>
 						<Globe className="w-4 h-4" />
 						Web Content
-						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">10</span>
+						<span className="px-1.5 py-0.5 rounded bg-white/10 text-xs">
+							10
+						</span>
 					</button>
 				</div>
 
@@ -215,22 +234,26 @@ const integrations = [
 	{
 		icon: Layers,
 		title: "Agent Skills",
-		description: "Use Cadence as an AI agent tool with the included skills.json manifest.",
+		description:
+			"Use Cadence as an AI agent tool with the included skills.json manifest.",
 	},
 	{
 		icon: Activity,
 		title: "CI/CD Integration",
-		description: "Add to your pipeline for automated AI content detection on every push.",
+		description:
+			"Add to your pipeline for automated AI content detection on every push.",
 	},
 	{
 		icon: Settings,
 		title: "Configurable Thresholds",
-		description: "Fine-tune detection sensitivity with customizable threshold settings.",
+		description:
+			"Fine-tune detection sensitivity with customizable threshold settings.",
 	},
 	{
 		icon: Code2,
 		title: "JSON API",
-		description: "Programmatic access with structured JSON output for automation.",
+		description:
+			"Programmatic access with structured JSON output for automation.",
 	},
 ];
 
@@ -305,7 +328,9 @@ function FeaturesPage() {
 			{/* Core Features */}
 			<section className="py-16 px-4 md:px-6 border-b border-white/5">
 				<div className="max-w-5xl mx-auto">
-					<h2 className="text-2xl md:text-3xl font-bold mb-8">Core Capabilities</h2>
+					<h2 className="text-2xl md:text-3xl font-bold mb-8">
+						Core Capabilities
+					</h2>
 					<div className="grid md:grid-cols-2 gap-6">
 						{coreFeatures.map((feature) => {
 							const Icon = feature.icon;

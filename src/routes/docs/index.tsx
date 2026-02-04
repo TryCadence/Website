@@ -26,7 +26,7 @@ function parseMarkdown(content: string) {
 	// No frontmatter - extract title from first # heading
 	const headingMatch = normalized.match(/^#\s+(.+)$/m);
 	const title = headingMatch?.[1]?.trim() || "Documentation";
-	
+
 	// Extract description from first paragraph after the heading
 	const descriptionMatch = normalized.match(/^#\s+.+\n\n(.+?)(?:\n\n|$)/m);
 	const description = descriptionMatch?.[1]?.trim() || "";

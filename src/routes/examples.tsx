@@ -1,11 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-	ArrowLeft,
-	ChevronRight,
-	Twitter,
-	Users,
-	Zap,
-} from "lucide-react";
+import { ArrowLeft, ChevronRight, Twitter, Users, Zap } from "lucide-react";
 import { LogoIcon } from "../components/Logo";
 import { Footer } from "../components/landing/Footer";
 import { useVersion } from "../lib/useVersion";
@@ -25,10 +19,26 @@ const gitExamples = [
 			authors: 1,
 		},
 		patterns: [
-			{ name: "Velocity Anomaly", severity: "high", detail: "750+ additions/min" },
-			{ name: "Burst Pattern", severity: "high", detail: "12 commits in 45 seconds" },
-			{ name: "Template Patterns", severity: "medium", detail: "Repetitive structure detected" },
-			{ name: "Perfect Formatting", severity: "medium", detail: "100% consistent style" },
+			{
+				name: "Velocity Anomaly",
+				severity: "high",
+				detail: "750+ additions/min",
+			},
+			{
+				name: "Burst Pattern",
+				severity: "high",
+				detail: "12 commits in 45 seconds",
+			},
+			{
+				name: "Template Patterns",
+				severity: "medium",
+				detail: "Repetitive structure detected",
+			},
+			{
+				name: "Perfect Formatting",
+				severity: "medium",
+				detail: "100% consistent style",
+			},
 		],
 	},
 	{
@@ -45,9 +55,21 @@ const gitExamples = [
 			authors: 2,
 		},
 		patterns: [
-			{ name: "Timing Anomaly", severity: "high", detail: "Exactly 60s between commits" },
-			{ name: "Message Patterns", severity: "medium", detail: "Generic commit messages" },
-			{ name: "Size Analysis", severity: "low", detail: "Consistent 200-line commits" },
+			{
+				name: "Timing Anomaly",
+				severity: "high",
+				detail: "Exactly 60s between commits",
+			},
+			{
+				name: "Message Patterns",
+				severity: "medium",
+				detail: "Generic commit messages",
+			},
+			{
+				name: "Size Analysis",
+				severity: "low",
+				detail: "Consistent 200-line commits",
+			},
 		],
 	},
 	{
@@ -64,7 +86,11 @@ const gitExamples = [
 			authors: 4,
 		},
 		patterns: [
-			{ name: "Natural Velocity", severity: "none", detail: "Human-typical pace" },
+			{
+				name: "Natural Velocity",
+				severity: "none",
+				detail: "Human-typical pace",
+			},
 			{ name: "Varied Timing", severity: "none", detail: "Organic intervals" },
 		],
 	},
@@ -556,7 +582,8 @@ function ExamplesPage() {
 						Try it yourself
 					</h2>
 					<p className="text-white/50 mb-8">
-						Install Cadence and start analyzing your own repositories and content.
+						Install Cadence and start analyzing your own repositories and
+						content.
 					</p>
 					<div className="flex flex-wrap justify-center gap-4">
 						<Link
