@@ -8,6 +8,7 @@ import {
 	Download,
 	ExternalLink,
 	GitCommit,
+	GithubIcon,
 	Loader2,
 	Plus,
 	Tag,
@@ -46,37 +47,92 @@ function parseReleaseBody(body: string): ParsedSection[] {
 	const sections: ParsedSection[] = [];
 	const normalized = body.replace(/\r\n/g, "\n");
 
-	// Parse sections within the release body
-	const sectionRegex =
-		/### (Added|Changed|Fixed|Technical Details|Usage Examples|Known Limitations)\n([\s\S]*?)(?=###|$)/g;
-	const sectionMatches = [...normalized.matchAll(sectionRegex)];
+	// Split by section headers (### Header)
+	const sectionSplit = normalized.split(/^### /m);
 
-	for (const sectionMatch of sectionMatches) {
-		const sectionTitle = sectionMatch[1];
-		const sectionContent = sectionMatch[2].trim();
+	// First element is before any header, skip it
+	for (let i = 1; i < sectionSplit.length; i++) {
+		const part = sectionSplit[i];
+		const lines = part.split("\n");
+		const firstLine = lines[0];
+
+		// Extract section title from first line
+		let sectionTitle = firstLine;
+		let sectionContent = lines.slice(1).join("\n").trim();
 
 		let type: ParsedSection["type"] = "other";
-		if (sectionTitle === "Added") type = "added";
-		else if (sectionTitle === "Changed") type = "changed";
-		else if (sectionTitle === "Fixed") type = "fixed";
-		else if (sectionTitle === "Technical Details") type = "technical";
+		if (firstLine === "Added") {
+			type = "added";
+		} else if (firstLine === "Changed") {
+			type = "changed";
+		} else if (firstLine === "Fixed") {
+			type = "fixed";
+		} else if (firstLine === "Technical Details") {
+			type = "technical";
+		}
 
-		// Parse items - look for bullet points or sub-sections
+		// Parse items - look for bullet points, numbered items, or sub-sections
 		const items: string[] = [];
-		const lines = sectionContent.split("\n");
-		let currentItem = "";
+		const contentLines = sectionContent.split("\n");
 
-		for (const line of lines) {
-			if (line.startsWith("- ") || line.startsWith("* ")) {
+		let currentItem = "";
+		let currentSubsection = "";
+
+		for (const line of contentLines) {
+			// Skip completely empty lines
+			if (!line.trim()) continue;
+
+			// Sub-section headers (#### )
+			if (line.startsWith("#### ")) {
 				if (currentItem) items.push(currentItem.trim());
-				currentItem = line.slice(2);
-			} else if (line.startsWith("#### ")) {
+				currentSubsection = line.slice(5); // Remove "#### "
+				currentItem = ""; // Reset, don't create item yet
+				continue;
+			}
+
+			// Top-level bullets (not indented)
+			if (
+				(line.startsWith("- ") || line.startsWith("* ")) &&
+				!line.startsWith("  ")
+			) {
 				if (currentItem) items.push(currentItem.trim());
-				currentItem = `**${line.slice(5)}**`;
-			} else if (line.trim() && currentItem) {
-				currentItem += ` ${line.trim()}`;
+				const bulletText = line.slice(2);
+				// If we have a subsection, include it with the first item
+				if (currentSubsection && currentItem === "") {
+					currentItem = `**${currentSubsection}**\n${bulletText}`;
+					currentSubsection = ""; // Consumed
+				} else {
+					currentItem = bulletText;
+				}
+			}
+			// Numbered items (1., 2., etc.) not indented
+			else if (/^\d+\.\s/.test(line) && !line.startsWith("  ")) {
+				if (currentItem) items.push(currentItem.trim());
+				const numberedText = line.replace(/^\d+\.\s/, "");
+				// If we have a subsection, include it with the first item
+				if (currentSubsection && currentItem === "") {
+					currentItem = `**${currentSubsection}**\n${numberedText}`;
+					currentSubsection = ""; // Consumed
+				} else {
+					currentItem = numberedText;
+				}
+			}
+			// Sub-items (indented bullets or numbered)
+			else if (
+				line.startsWith("  - ") ||
+				line.startsWith("  * ") ||
+				/^  \d+\.\s/.test(line)
+			) {
+				if (currentItem) {
+					currentItem += `\n${line.trim()}`;
+				}
+			}
+			// Continuation lines (non-empty, not starting with special chars)
+			else if (line.trim() && currentItem) {
+				currentItem += `\n${line.trim()}`;
 			}
 		}
+
 		if (currentItem) items.push(currentItem.trim());
 
 		if (items.length > 0) {
@@ -116,7 +172,7 @@ function getSectionColor(type: string) {
 }
 
 function ReleaseSection({ section }: { section: ParsedSection }) {
-	const [expanded, setExpanded] = useState(section.type === "added");
+	const [expanded, setExpanded] = useState(false);
 
 	return (
 		<div className="border border-white/5 rounded-lg overflow-hidden">
@@ -148,20 +204,25 @@ function ReleaseSection({ section }: { section: ParsedSection }) {
 					{section.items.map((item) => (
 						<div key={item} className="flex gap-2 md:gap-3 text-sm">
 							<span className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
-							<span
-								className="text-white/70 break-words"
-								dangerouslySetInnerHTML={{
-									__html: item
-										.replace(
-											/\*\*(.*?)\*\*/g,
-											'<strong class="text-white font-medium">$1</strong>',
-										)
-										.replace(
-											/`(.*?)`/g,
-											'<code class="px-1 py-0.5 bg-white/5 rounded text-xs font-mono break-all">$1</code>',
-										),
-								}}
-							/>
+							<div className="text-white/70 break-words flex-1">
+								{item.split("\n").map((line, idx) => (
+									<div
+										key={idx}
+										className={idx > 0 ? "ml-2 text-white/60" : ""}
+										dangerouslySetInnerHTML={{
+											__html: line
+												.replace(
+													/\*\*(.*?)\*\*/g,
+													'<strong class="text-white font-medium">$1</strong>',
+												)
+												.replace(
+													/`(.*?)`/g,
+													'<code class="px-1 py-0.5 bg-white/5 rounded text-xs font-mono break-all">$1</code>',
+												),
+										}}
+									/>
+								))}
+							</div>
 						</div>
 					))}
 				</div>
@@ -223,7 +284,7 @@ function ReleaseCard({
 								Latest
 							</span>
 						)}
-						{release.prerelease && (
+						{release.prerelease  && (
 							<span className="px-2 py-0.5 text-xs font-medium bg-amber-500/20 text-amber-400 rounded-full border border-amber-500/30">
 								Pre-release
 							</span>
@@ -315,6 +376,13 @@ function ChangelogPage() {
 	const [releases, setReleases] = useState<GitHubRelease[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const [page, setPage] = useState(1);
+	const itemsPerPage = 10;
+	const totalPages = Math.ceil(releases.length / itemsPerPage);
+	const paginatedReleases = releases.slice(
+		(page - 1) * itemsPerPage,
+		page * itemsPerPage,
+	);
 
 	useEffect(() => {
 		async function fetchReleases() {
@@ -379,8 +447,7 @@ function ChangelogPage() {
 								rel="noopener noreferrer"
 								className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1"
 							>
-								GitHub
-								<ExternalLink className="w-3 h-3" />
+								<GithubIcon className="w-3 h-3" />
 							</a>
 						</nav>
 					</div>
@@ -425,7 +492,7 @@ function ChangelogPage() {
 								releases
 							</div>
 							<div className="flex items-center gap-2 text-sm text-white/50">
-								<div className="w-2 h-2 rounded-full bg-amber-400" />
+							<div className="w-2 h-2 rounded-full bg-emerald-400" />
 								Latest:{" "}
 								<span className="text-white font-medium">
 									{releases[0]?.tag_name}
@@ -465,19 +532,59 @@ function ChangelogPage() {
 				)}
 
 				{!loading && !error && releases.length > 0 && (
+				<>
 					<div className="space-y-0">
-						{releases.map((release, idx) => (
+						{paginatedReleases.map((release, idx) => (
 							<ReleaseCard
 								key={release.id}
 								release={release}
-								isLatest={idx === 0}
+								isLatest={idx === 0 && page === 1}
 							/>
 						))}
 					</div>
+
+					{/* Pagination */}
+					{totalPages > 1 && (
+						<div className="flex flex-wrap items-center justify-center gap-2 mt-8 pt-8 border-t border-white/5">
+							<button
+								type="button"
+								onClick={() => setPage(Math.max(1, page - 1))}
+								disabled={page === 1}
+								className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+							>
+								Previous
+							</button>
+
+							{Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+								<button
+									type="button"
+									key={p}
+									onClick={() => setPage(p)}
+									className={`w-8 h-8 text-sm rounded-md border transition-colors ${
+										p === page
+											? "border-white/20 bg-white/10 text-white font-medium"
+											: "border-white/10 text-white/60 hover:bg-white/5"
+									}`}
+								>
+									{p}
+								</button>
+							))}
+
+							<button
+								type="button"
+								onClick={() => setPage(Math.min(totalPages, page + 1))}
+								disabled={page === totalPages}
+								className="px-3 py-1.5 text-sm rounded-md border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+							>
+								Next
+							</button>
+						</div>
+					)}
+				</>
 				)}
 
-				{/* End of timeline */}
-				{!loading && !error && releases.length > 0 && (
+				{/* End of timeline - only show on last page */}
+				{!loading && !error && releases.length > 0 && page === totalPages && (
 					<div className="flex items-center gap-4 mt-8 md:pl-6">
 						<div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
 							<GitCommit className="w-4 h-4 md:w-5 md:h-5 text-white/30" />
