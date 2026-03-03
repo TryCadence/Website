@@ -393,5 +393,106 @@ class CadenceAPI {
   }
 }
 
+// ---- Error message parser for user-friendly explanations ---- //
+
+export interface ParsedError {
+  title: string;
+  message: string;
+  suggestion?: string;
+  isRetryable: boolean;
+}
+
+export function parseAnalysisError(errorText: string): ParsedError {
+  const lower = errorText.toLowerCase();
+
+  // Bot protection / 403 Forbidden
+  if (lower.includes("403") || lower.includes("forbidden")) {
+    return {
+      title: "Website Blocked Analysis",
+      message:
+        "The website appears to have bot protection enabled (Cloudflare, WAF, or similar) that prevented analysis.",
+      suggestion:
+        "Try analyzing a different website, or check if the site is publicly accessible without special headers.",
+      isRetryable: false,
+    };
+  }
+
+  // 404 Not Found
+  if (lower.includes("404") || lower.includes("not found")) {
+    return {
+      title: "Website Not Found",
+      message: "The URL could not be reached or no longer exists.",
+      suggestion: "Verify the URL is correct and the website is online.",
+      isRetryable: true,
+    };
+  }
+
+  // Connection timeout
+  if (lower.includes("timeout") || lower.includes("timed out")) {
+    return {
+      title: "Connection Timeout",
+      message: "The request took too long and was cancelled.",
+      suggestion: "The website may be slow or unresponsive. Try again in a moment.",
+      isRetryable: true,
+    };
+  }
+
+  // DNS / Network errors
+  if (
+    lower.includes("dns") ||
+    lower.includes("net::") ||
+    lower.includes("econnrefused") ||
+    lower.includes("enotfound")
+  ) {
+    return {
+      title: "Network Error",
+      message: "Could not connect to the website due to a network issue.",
+      suggestion:
+        "Check if the domain name is correct and the website is online.",
+      isRetryable: true,
+    };
+  }
+
+  // TLS / SSL errors
+  if (lower.includes("ssl") || lower.includes("certificate") || lower.includes("tls")) {
+    return {
+      title: "SSL/Certificate Error",
+      message: "The website has an SSL certificate issue.",
+      suggestion: "The website's SSL certificate may be invalid or expired.",
+      isRetryable: false,
+    };
+  }
+
+  // Rate limiting
+  if (lower.includes("rate limit") || lower.includes("429")) {
+    return {
+      title: "Rate Limited",
+      message: "Too many requests were sent too quickly.",
+      suggestion: "Please wait a moment before trying again.",
+      isRetryable: true,
+    };
+  }
+
+  // Generic fetch errors
+  if (lower.includes("failed to fetch")) {
+    return {
+      title: "Failed to Fetch",
+      message:
+        "Could not fetch the website. This may be due to network issues or website protection.",
+      suggestion:
+        "Check your internet connection or try analyzing a different website.",
+      isRetryable: true,
+    };
+  }
+
+  // Default fallback
+  return {
+    title: "Analysis Failed",
+    message: errorText || "An unknown error occurred during analysis.",
+    suggestion: "Please try again or contact support if the issue persists.",
+    isRetryable: true,
+  };
+}
+
 // Export singleton instance
 export const cadenceApi = new CadenceAPI();

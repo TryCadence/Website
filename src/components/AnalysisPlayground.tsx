@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { cadenceApi } from "@/lib/cadenceApi";
+import { cadenceApi, parseAnalysisError } from "@/lib/cadenceApi";
 import {
   useStreamingAnalysis,
   type StreamStatus,
@@ -420,19 +420,57 @@ export function AnalysisPlayground() {
 
           {/* ---- Error ---- */}
           {stream.error && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-4 rounded-lg bg-red-500/5 border border-red-500/20 flex items-start gap-3"
-            >
-              <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-red-300 mb-1">
-                  Analysis Failed
-                </p>
-                <p className="text-sm text-red-200/80">{stream.error}</p>
-              </div>
-            </motion.div>
+            (() => {
+              const parsedError = parseAnalysisError(stream.error);
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 rounded-lg bg-red-500/5 border border-red-500/20"
+                >
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-red-300 mb-1">
+                        {parsedError.title}
+                      </p>
+                      <p className="text-sm text-red-200/80 mb-2">
+                        {parsedError.message}
+                      </p>
+                      {parsedError.suggestion && (
+                        <p className="text-xs text-red-200/60 mb-3 italic">
+                          💡 {parsedError.suggestion}
+                        </p>
+                      )}
+                      <div className="flex gap-2">
+                        {parsedError.isRetryable && (
+                          <button
+                            onClick={() => {
+                              if (stream.analysisType && stream.targetUrl) {
+                                actions.startAnalysis(
+                                  stream.analysisType,
+                                  stream.targetUrl
+                                );
+                              }
+                            }}
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/30 text-red-300 text-xs font-medium hover:bg-red-500/30 hover:text-red-200 transition-colors"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            Retry
+                          </button>
+                        )}
+                        <button
+                          onClick={handleReset}
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/70 text-xs font-medium hover:bg-white/10 hover:text-white transition-colors"
+                        >
+                          Try Different URL
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })()
           )}
 
           {/* ---- Live detection feed ---- */}
