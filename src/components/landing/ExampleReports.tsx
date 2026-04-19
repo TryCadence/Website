@@ -120,71 +120,69 @@ export function ExampleReports() {
 							<div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
 						</div>
 					</div>
-					<pre className="p-4 overflow-x-auto text-sm font-mono leading-relaxed antialiased">
-						<code className="block">
-							{`{
-`}
-							<span className="text-[#5c6370]"> 1 </span>
-							<span className="text-[#56b6c2]">"url"</span>
-							<span className="text-[#abb2bf]">: </span>
-							<span className="text-[#e5c07b]">"https://example.com"</span>
-							<span className="text-[#abb2bf]">,</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 2 </span>
-							<span className="text-[#56b6c2]">"analysis"</span>
-							<span className="text-[#abb2bf]">: {"{"}</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 3 </span>
-							<span className="text-[#56b6c2]"> "confidence_score"</span>
-							<span className="text-[#abb2bf]">: </span>
-							<span className="text-[#98c379]">75</span>
-							<span className="text-[#abb2bf]">,</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 4 </span>
-							<span className="text-[#56b6c2]"> "assessment"</span>
-							<span className="text-[#abb2bf]">: </span>
-							<span className="text-[#e5c07b]">"LIKELY AI-GENERATED"</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 5 </span>
-							<span className="text-[#abb2bf]"> {"}"},</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 6 </span>
-							<span className="text-[#56b6c2]">"flagged_items"</span>
-							<span className="text-[#abb2bf]">: [</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 7 </span>
-							<span className="text-[#abb2bf]"> {"{"}</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 8 </span>
-							<span className="text-[#56b6c2]"> "pattern_type"</span>
-							<span className="text-[#abb2bf]">: </span>
-							<span className="text-[#e5c07b]">"generic_language"</span>
-							<span className="text-[#abb2bf]">,</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 9 </span>
-							<span className="text-[#56b6c2]"> "severity"</span>
-							<span className="text-[#abb2bf]">: </span>
-							<span className="text-[#98c379]">1.0</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 10 </span>
-							<span className="text-[#abb2bf]"> {"}"}</span>
-							{`
-`}
-							<span className="text-[#5c6370]"> 11 </span>
-							<span className="text-[#abb2bf]"> ]</span>
-							{`
-}`}
-						</code>
-					</pre>
+					<div className="py-4 overflow-x-auto text-[13px] font-mono leading-[1.6] antialiased bg-[#09090b]">
+						<div className="min-w-full inline-block">
+							{[
+								<span key="1">{"{"}</span>,
+								<span key="2">
+									<span className="text-[#56b6c2]">  "url"</span>
+									<span className="text-[#abb2bf]">: </span>
+									<span className="text-[#e5c07b]">"https://example.com"</span>
+									<span className="text-[#abb2bf]">,</span>
+								</span>,
+								<span key="3">
+									<span className="text-[#56b6c2]">  "analysis"</span>
+									<span className="text-[#abb2bf]">: {"{"}</span>
+								</span>,
+								<span key="4">
+									<span className="text-[#56b6c2]">    "confidence_score"</span>
+									<span className="text-[#abb2bf]">: </span>
+									<span className="text-[#98c379]">75</span>
+									<span className="text-[#abb2bf]">,</span>
+								</span>,
+								<span key="5">
+									<span className="text-[#56b6c2]">    "assessment"</span>
+									<span className="text-[#abb2bf]">: </span>
+									<span className="text-[#e5c07b]">"LIKELY AI-GENERATED"</span>
+								</span>,
+								<span key="6">
+									<span className="text-[#abb2bf]">  {"}"},</span>
+								</span>,
+								<span key="7">
+									<span className="text-[#56b6c2]">  "flagged_items"</span>
+									<span className="text-[#abb2bf]">: [</span>
+								</span>,
+								<span key="8">
+									<span className="text-[#abb2bf]">    {"{"}</span>
+								</span>,
+								<span key="9">
+									<span className="text-[#56b6c2]">      "pattern_type"</span>
+									<span className="text-[#abb2bf]">: </span>
+									<span className="text-[#e5c07b]">"generic_language"</span>
+									<span className="text-[#abb2bf]">,</span>
+								</span>,
+								<span key="10">
+									<span className="text-[#56b6c2]">      "severity"</span>
+									<span className="text-[#abb2bf]">: </span>
+									<span className="text-[#98c379]">1.0</span>
+								</span>,
+								<span key="11">
+									<span className="text-[#abb2bf]">    {"}"}</span>
+								</span>,
+								<span key="12">
+									<span className="text-[#abb2bf]">  ]</span>
+								</span>,
+								<span key="13">{"}"}</span>,
+							].map((content, idx) => (
+								<div key={idx} className="group flex hover:bg-white/[0.03] transition-colors px-4">
+									<span className="w-10 shrink-0 text-white/20 text-right pr-4 select-none border-r border-white/5 mr-4 group-hover:text-white/40 transition-colors">
+										{idx + 1}
+									</span>
+									<span className="flex-1 whitespace-pre">{content}</span>
+								</div>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
