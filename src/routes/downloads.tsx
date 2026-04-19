@@ -274,19 +274,9 @@ function DownloadsPage() {
 														{release.tag_name}
 													</p>
 													<p className="text-xs text-white/50">
-														{release.assets.length} files •{" "}
 														{new Date(release.published_at).toLocaleDateString()}
 													</p>
 												</div>
-											</div>
-											<div className="text-xs bg-white/10 px-2.5 py-1 rounded text-white/60 group-hover:text-white/80">
-												{(
-													release.assets.reduce(
-														(sum, a) => sum + a.size,
-														0
-													) / 1024 / 1024
-												).toFixed(1)}
-												MB
 											</div>
 										</div>
 									</a>
